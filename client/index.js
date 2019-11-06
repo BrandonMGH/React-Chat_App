@@ -1,23 +1,14 @@
-import socketIOClient from "socket.io-client"
+import React from "react";
+import ReactDOM from "react-dom"
 
-const socket = socketIOClient ('http://localhost:3000/'); 
-socket.on('connect', function () {
-  socket.send("hi");
+import Chat from "./src/components/Chat/Chat.js"
 
-  socket.on("message", function (msg){
+function Index() {
+  return (
+    <div>
+      <Chat />
+    </div>
+  )
+}
 
-  }); 
-});
-// import React from "react"
-// import ReactDom from "react-dom"
-// import Button from '@material-ui/core/Button';
-
-// function Index() {
-//   return (
-//     <Button variant="contained" color="primary">
-//       Hello World
-//     </Button>
-//   );
-// }
-
-// ReactDom.render(<Index />, document.getElementById("root"))
+ReactDOM.render(<Index />, document.getElementById("root"))

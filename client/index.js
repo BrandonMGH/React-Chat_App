@@ -1,10 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 
-function Index () {
-    return (
-        <p> Hi </p>
-    )
-}
+import App from './src/App.js'
 
-ReactDOM.render(<Index />, document.getElementById("root"))
+
+ReactDOM.render(<App />, document.getElementById("root"))

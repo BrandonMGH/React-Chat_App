@@ -12,7 +12,7 @@ export default function Chat() {
         socketRef.current = socketIOClient("http://localhost:3000")
 
         socketRef.current.on("chatMessage", (data) => {
-            console.log('a user connected');
+            setMessages(messages => [...messages, data]);
         });
 
         return () => {
@@ -23,7 +23,7 @@ export default function Chat() {
     });
 
     const sendMessage = (message) => {
-        socketRef.current.emit("message", message)
+        socketRef.current.emit("chatMessage", message)
     };
 
     return (

@@ -53286,13 +53286,13 @@ Object.defineProperty(exports, "default", {
 var _Avatar = _interopRequireDefault(require("./Avatar"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./Avatar":"node_modules/@material-ui/core/esm/Avatar/Avatar.js"}],"src/components/Message/Message.js":[function(require,module,exports) {
+},{"./Avatar":"node_modules/@material-ui/core/esm/Avatar/Avatar.js"}],"src/components/Messages/Messages.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.default = Message;
+exports.default = Messages;
 
 var _react = _interopRequireDefault(require("react"));
 
@@ -53310,75 +53310,28 @@ var _ListItemAvatar = _interopRequireDefault(require("@material-ui/core/ListItem
 
 var _Avatar = _interopRequireDefault(require("@material-ui/core/Avatar"));
 
-var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var useStyles = (0, _styles.makeStyles)(function (theme) {
-  return {
-    root: {
-      width: '100%',
-      maxWidth: 360,
-      backgroundColor: theme.palette.background.paper
-    },
-    inline: {
-      display: 'inline'
-    }
-  };
-});
-
-function Message() {
-  var classes = useStyles();
-  return _react.default.createElement(_List.default, {
-    className: classes.root
-  }, _react.default.createElement(_ListItem.default, {
-    alignItems: "flex-start"
-  }, _react.default.createElement(_ListItemAvatar.default, null, _react.default.createElement(_Avatar.default, {
-    alt: "Remy Sharp",
-    src: "/static/images/avatar/1.jpg"
-  })), _react.default.createElement(_ListItemText.default, {
-    primary: "Brunch this weekend?",
-    secondary: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Typography.default, {
-      component: "span",
-      variant: "body2",
-      className: classes.inline,
-      color: "textPrimary"
-    }, "Ali Connors"), " — I'll be in your neighborhood doing errands this…")
-  })), _react.default.createElement(_Divider.default, {
+function Messages(props) {
+  var messages = props.messages;
+  messages.map(function (message, index) {
+    console.log(message);
+  });
+  return _react.default.createElement(_List.default, null, messages.map(function (message, index) {
+    return _react.default.createElement(_ListItem.default, {
+      alignItems: "flex-start"
+    }, _react.default.createElement(_ListItemAvatar.default, null, _react.default.createElement(_Avatar.default, {
+      alt: "Remy Sharp",
+      src: "/static/images/avatar/1.jpg"
+    })), _react.default.createElement(_ListItemText.default, {
+      primary: "Brunch this weekend?"
+    }));
+  }), _react.default.createElement(_Divider.default, {
     variant: "inset",
     component: "li"
-  }), _react.default.createElement(_ListItem.default, {
-    alignItems: "flex-start"
-  }, _react.default.createElement(_ListItemAvatar.default, null, _react.default.createElement(_Avatar.default, {
-    alt: "Travis Howard",
-    src: "/static/images/avatar/2.jpg"
-  })), _react.default.createElement(_ListItemText.default, {
-    primary: "Summer BBQ",
-    secondary: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Typography.default, {
-      component: "span",
-      variant: "body2",
-      className: classes.inline,
-      color: "textPrimary"
-    }, "to Scott, Alex, Jennifer"), " — Wish I could come, but I'm out of town this…")
-  })), _react.default.createElement(_Divider.default, {
-    variant: "inset",
-    component: "li"
-  }), _react.default.createElement(_ListItem.default, {
-    alignItems: "flex-start"
-  }, _react.default.createElement(_ListItemAvatar.default, null, _react.default.createElement(_Avatar.default, {
-    alt: "Cindy Baker",
-    src: "/static/images/avatar/3.jpg"
-  })), _react.default.createElement(_ListItemText.default, {
-    primary: "Oui Oui",
-    secondary: _react.default.createElement(_react.default.Fragment, null, _react.default.createElement(_Typography.default, {
-      component: "span",
-      variant: "body2",
-      className: classes.inline,
-      color: "textPrimary"
-    }, "Sandra Adams"), ' — Do you have Paris recommendations? Have you ever…')
-  })));
+  }));
 }
-},{"react":"node_modules/react/index.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/List":"node_modules/@material-ui/core/esm/List/index.js","@material-ui/core/ListItem":"node_modules/@material-ui/core/esm/ListItem/index.js","@material-ui/core/Divider":"node_modules/@material-ui/core/esm/Divider/index.js","@material-ui/core/ListItemText":"node_modules/@material-ui/core/esm/ListItemText/index.js","@material-ui/core/ListItemAvatar":"node_modules/@material-ui/core/esm/ListItemAvatar/index.js","@material-ui/core/Avatar":"node_modules/@material-ui/core/esm/Avatar/index.js","@material-ui/core/Typography":"node_modules/@material-ui/core/esm/Typography/index.js"}],"src/components/Chat/Chat.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/List":"node_modules/@material-ui/core/esm/List/index.js","@material-ui/core/ListItem":"node_modules/@material-ui/core/esm/ListItem/index.js","@material-ui/core/Divider":"node_modules/@material-ui/core/esm/Divider/index.js","@material-ui/core/ListItemText":"node_modules/@material-ui/core/esm/ListItemText/index.js","@material-ui/core/ListItemAvatar":"node_modules/@material-ui/core/esm/ListItemAvatar/index.js","@material-ui/core/Avatar":"node_modules/@material-ui/core/esm/Avatar/index.js"}],"src/components/Chat/Chat.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53390,20 +53343,20 @@ var _react = _interopRequireDefault(require("react"));
 
 var _MessageContainer = _interopRequireDefault(require("../MessageContainer/MessageContainer.js"));
 
-var _Message = _interopRequireDefault(require("../Message/Message.js"));
+var _Messages = _interopRequireDefault(require("../Messages/Messages.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function Chat() {
-  return _react.default.createElement("div", null, _react.default.createElement(_Message.default, {
-    message: ["Hello this is message 1!", "Hello this is message 1!", "Hello this is message 1!", "Hello this is message 1!", "Hello this is message 1!"]
+  return _react.default.createElement("div", null, _react.default.createElement(_Messages.default, {
+    messages: ["message one", "message two", "message three", "message four", "message five"]
   }), _react.default.createElement(_MessageContainer.default, {
     onSendMessage: function onSendMessage(message) {
       console.log("Message sent: " + message);
     }
   }));
 }
-},{"react":"node_modules/react/index.js","../MessageContainer/MessageContainer.js":"src/components/MessageContainer/MessageContainer.js","../Message/Message.js":"src/components/Message/Message.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","../MessageContainer/MessageContainer.js":"src/components/MessageContainer/MessageContainer.js","../Messages/Messages.js":"src/components/Messages/Messages.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));
@@ -53447,7 +53400,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62043" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59707" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

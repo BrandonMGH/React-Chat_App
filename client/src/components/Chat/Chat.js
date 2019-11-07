@@ -1,19 +1,22 @@
 import React from 'react'
 
 import MessageContainer from "../MessageContainer/MessageContainer.js"
-import Messages from "../Message/Message.js"
+import Messages from "../Messages/Messages.js"
 
 export default function Chat() {
     return (
         <div>
-            <Messages message={[
-                "Hello this is message 1!",
-                "Hello this is message 1!",
-                "Hello this is message 1!",
-                "Hello this is message 1!",
-                "Hello this is message 1!",
-            ]
-            } />
+            <Messages messages={
+                [
+                    "message one",
+                    "message two",
+                    "message three",
+                    "message four",
+                    "message five"
+                ]
+            }
+            
+            />
             <MessageContainer onSendMessage={message => {
                 console.log("Message sent: " + message)
             }} /> 

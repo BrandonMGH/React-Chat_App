@@ -11,22 +11,23 @@ import Avatar from '@material-ui/core/Avatar';
 
 export default function Messages(props) {
   let messages = props.messages
-  messages.map((message, index) => {
+  messages.map(message => {
     console.log(message)
   })
   return (
     <List>
-      {messages.map((message, index) => (
-        <ListItem alignItems="flex-start">
+      {messages.flatMap((message, index) => [(
+        <ListItem alignItems="flex-start" key={index}>
           <ListItemAvatar>
             <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
           </ListItemAvatar>
           <ListItemText
-            primary="Brunch this weekend?"
+            primary={message}
           />
         </ListItem>
-      ))}
-      <Divider variant="inset" component="li" />
+      ), <Divider variant="inset" key ={"Divider-" + index}component="li" />])}
     </List>
-  );
+
+   
+  )
 }

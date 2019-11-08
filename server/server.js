@@ -6,6 +6,13 @@ const io = require('socket.io')(http);
 
 
 
+io.on('connection', function(socket){
+    socket.on('chat message', function(test){
+      console.log('message: ' + test);
+    });
+  });
+
+
 http.listen(PORT, () =>{
     console.log("listening on port: " + PORT)
 })

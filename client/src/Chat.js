@@ -1,25 +1,33 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import queryString from 'query-string';
+import socketIOClient from "socket.io-client";
 
-export default function Chat () {
-    const [name,setName] = useState("")
-    useEffect(() => {
+export default function Chat() {
+    const [urlParam, seturlParam] = useState("")
+    const [chatText, setChatText] = useState("")
 
-        const {name} = queryString.parse(location.search)
+    const socket = socketIOClient('http://localhost:3000/')
+
+    let test = (chatText) => {
+        socket.emit('chat message', chatText);
+    }
+
+    useEffect((chatText) => {
+
+        const { name } = queryString.parse(location.search)
         console.log(name)
-
-        setName(name)
+        const test = "Yay, it works"
+        seturlParam(name)
         
-        // const { name, room } = queryString.parse(location.search);
-    
-     
-    
-        // setRoom(room);
-        // setName(name)
-    
-       
-      }, [location.search]);
+
+
+    }, [location.search]);
     return (
-        <p>{name}</p>
+        <div>
+            <div>
+                <input onChange={event => setChatText(event.target.value)} />
+                <button onClick={test(chatText)} />
+            </div>
+        </div>
     )
 }

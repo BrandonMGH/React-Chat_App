@@ -41326,9 +41326,9 @@ function Chat() {
     onChange: function onChange(event) {
       return setChatText(event.target.value);
     }
-  }), _react.default.createElement("button", {
+  })), _react.default.createElement("button", {
     onClick: test(chatText)
-  })));
+  }));
 }
 },{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";

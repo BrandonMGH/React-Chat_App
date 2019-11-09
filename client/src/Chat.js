@@ -7,6 +7,8 @@ export default function Chat() {
     const [chatText, setChatText] = useState("")
 
     const socket = socketIOClient('http://localhost:3000/')
+    
+   
 
     let test = (chatText) => {
         socket.emit('chat message', chatText);
@@ -26,8 +28,9 @@ export default function Chat() {
         <div>
             <div>
                 <input onChange={event => setChatText(event.target.value)} />
-                <button onClick={test(chatText)} />
             </div>
+            <button onClick={test(chatText)} />
         </div>
+        
     )
 }

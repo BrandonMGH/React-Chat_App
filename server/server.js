@@ -8,7 +8,8 @@ const io = require('socket.io')(http);
 
 io.on('connection', function(socket){
     socket.on('chat message', function(test){
-      console.log('message: ' + test);
+    //   console.log('message: ' + test);
+      io.emit('chat message', test);
     });
   });
 

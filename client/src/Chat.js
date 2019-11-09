@@ -11,10 +11,15 @@ export default function Chat() {
    
 
     let handleSubmit = (event) => {
-        // socket.emit('chat message', chatText);
+        
         event.preventDefault(); 
+        socket.emit('chat message', chatText);
         console.log(chatText)
     }
+
+    socket.on('chat message', function(msg){
+        console.log(msg)
+      });
 
     useEffect((chatText) => {
 
@@ -27,9 +32,11 @@ export default function Chat() {
 
     }, [location.search]);
     return (
+        <div>
+            <p>{chatText}</p>
         <form onSubmit={handleSubmit}>
         <label>
-          Frirst Name:
+          ChatBox:
           <input
             type="text"
             value={chatText}
@@ -38,6 +45,6 @@ export default function Chat() {
         </label>
         <input type="submit" value="Submit" />
       </form>
-        
+        </div>
     )
 }

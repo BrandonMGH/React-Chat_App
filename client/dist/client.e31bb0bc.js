@@ -41311,11 +41311,14 @@ function Chat() {
   var socket = (0, _socket.default)('http://localhost:3000/');
 
   var handleSubmit = function handleSubmit(event) {
-    // socket.emit('chat message', chatText);
     event.preventDefault();
+    socket.emit('chat message', chatText);
     console.log(chatText);
   };
 
+  socket.on('chat message', function (msg) {
+    console.log(msg);
+  });
   (0, _react.useEffect)(function (chatText) {
     var _queryString$parse = _queryString.default.parse(location.search),
         name = _queryString$parse.name;
@@ -41324,9 +41327,9 @@ function Chat() {
     var test = "Yay, it works";
     seturlParam(name);
   }, [location.search]);
-  return _react.default.createElement("form", {
+  return _react.default.createElement("div", null, _react.default.createElement("p", null, chatText), _react.default.createElement("form", {
     onSubmit: handleSubmit
-  }, _react.default.createElement("label", null, "Frirst Name:", _react.default.createElement("input", {
+  }, _react.default.createElement("label", null, "ChatBox:", _react.default.createElement("input", {
     type: "text",
     value: chatText,
     onChange: function onChange(e) {
@@ -41335,7 +41338,7 @@ function Chat() {
   })), _react.default.createElement("input", {
     type: "submit",
     value: "Submit"
-  }));
+  })));
 }
 },{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";

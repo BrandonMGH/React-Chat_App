@@ -10,8 +10,10 @@ export default function Chat() {
     
    
 
-    let test = (chatText) => {
-        socket.emit('chat message', chatText);
+    let handleSubmit = (event) => {
+        // socket.emit('chat message', chatText);
+        event.preventDefault(); 
+        console.log(chatText)
     }
 
     useEffect((chatText) => {
@@ -25,12 +27,17 @@ export default function Chat() {
 
     }, [location.search]);
     return (
-        <div>
-            <div>
-                <input onChange={event => setChatText(event.target.value)} />
-            </div>
-            <button onClick={test(chatText)} />
-        </div>
+        <form onSubmit={handleSubmit}>
+        <label>
+          Frirst Name:
+          <input
+            type="text"
+            value={chatText}
+            onChange={e => setChatText(e.target.value)}
+          />
+        </label>
+        <input type="submit" value="Submit" />
+      </form>
         
     )
 }

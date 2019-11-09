@@ -41310,8 +41310,10 @@ function Chat() {
 
   var socket = (0, _socket.default)('http://localhost:3000/');
 
-  var test = function test(chatText) {
-    socket.emit('chat message', chatText);
+  var handleSubmit = function handleSubmit(event) {
+    // socket.emit('chat message', chatText);
+    event.preventDefault();
+    console.log(chatText);
   };
 
   (0, _react.useEffect)(function (chatText) {
@@ -41322,12 +41324,17 @@ function Chat() {
     var test = "Yay, it works";
     seturlParam(name);
   }, [location.search]);
-  return _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("input", {
-    onChange: function onChange(event) {
-      return setChatText(event.target.value);
+  return _react.default.createElement("form", {
+    onSubmit: handleSubmit
+  }, _react.default.createElement("label", null, "Frirst Name:", _react.default.createElement("input", {
+    type: "text",
+    value: chatText,
+    onChange: function onChange(e) {
+      return setChatText(e.target.value);
     }
-  })), _react.default.createElement("button", {
-    onClick: test(chatText)
+  })), _react.default.createElement("input", {
+    type: "submit",
+    value: "Submit"
   }));
 }
 },{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {

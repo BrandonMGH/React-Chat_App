@@ -41300,40 +41300,56 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function Chat() {
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      urlParam = _useState2[0],
-      seturlParam = _useState2[1];
+      socketName = _useState2[0],
+      setSocketName = _useState2[1];
 
   var _useState3 = (0, _react.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      chatText = _useState4[0],
-      setChatText = _useState4[1];
+      socketText = _useState4[0],
+      setSocketText = _useState4[1];
+
+  var _useState5 = (0, _react.useState)([]),
+      _useState6 = _slicedToArray(_useState5, 2),
+      chatText = _useState6[0],
+      setChatText = _useState6[1];
+
+  var _useState7 = (0, _react.useState)([]),
+      _useState8 = _slicedToArray(_useState7, 2),
+      chatName = _useState8[0],
+      setChatName = _useState8[1];
 
   var socket = (0, _socket.default)('http://localhost:3000/');
+  console.log(chatText);
+  var socketObject = {
+    socketName: socketName,
+    socketText: socketText
+  };
 
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
-    socket.emit('chat message', chatText);
-    console.log(chatText);
+    socket.emit('chat message', socketObject);
+    console.log(socketObject);
   };
 
   socket.on('chat message', function (msg) {
-    console.log(msg);
+    setChatText(msg.socketText);
+    setChatName(msg.socketName);
+    console.log(chatText);
   });
   (0, _react.useEffect)(function (chatText) {
     var _queryString$parse = _queryString.default.parse(location.search),
         name = _queryString$parse.name;
 
     console.log(name);
-    var test = "Yay, it works";
-    seturlParam(name);
+    setSocketName(name);
   }, [location.search]);
-  return _react.default.createElement("div", null, _react.default.createElement("p", null, chatText), _react.default.createElement("form", {
+  return _react.default.createElement("div", null, _react.default.createElement("p", null, socketName, ":", chatText), _react.default.createElement("form", {
     onSubmit: handleSubmit
   }, _react.default.createElement("label", null, "ChatBox:", _react.default.createElement("input", {
     type: "text",
-    value: chatText,
+    value: socketText,
     onChange: function onChange(e) {
-      return setChatText(e.target.value);
+      return setSocketText(e.target.value);
     }
   })), _react.default.createElement("input", {
     type: "submit",
@@ -45430,7 +45446,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54422" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60365" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -7,9 +7,9 @@ const io = require('socket.io')(http);
 
 
 io.on('connection', function(socket){
-    socket.on('chat message', function(chatInfo){
+    socket.on('chat-message-server', function(chatInfo){
       console.log('message: ' + chatInfo.socketName + " and " + chatInfo.socketText);
-      io.emit('chat message', chatInfo);
+      io.emit('chat-message-client', chatInfo);
     });
   });
 

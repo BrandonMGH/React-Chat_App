@@ -41308,18 +41308,27 @@ function Chat() {
       socketText = _useState4[0],
       setSocketText = _useState4[1];
 
-  var _useState5 = (0, _react.useState)([]),
+  var _useState5 = (0, _react.useState)(""),
       _useState6 = _slicedToArray(_useState5, 2),
-      chatText = _useState6[0],
-      setChatText = _useState6[1];
+      chatName = _useState6[0],
+      setChatName = _useState6[1];
 
   var _useState7 = (0, _react.useState)([]),
       _useState8 = _slicedToArray(_useState7, 2),
-      chatName = _useState8[0],
-      setChatName = _useState8[1];
+      chatText = _useState8[0],
+      setChatText = _useState8[1];
+
+  var _useState9 = (0, _react.useState)([]),
+      _useState10 = _slicedToArray(_useState9, 2),
+      chatContainerName = _useState10[0],
+      setChatContainerName = _useState10[1];
+
+  var _useState11 = (0, _react.useState)([]),
+      _useState12 = _slicedToArray(_useState11, 2),
+      chatContainerText = _useState12[0],
+      setChatContainerText = _useState12[1];
 
   var socket = (0, _socket.default)('http://localhost:3000/');
-  console.log(chatText);
   var socketObject = {
     socketName: socketName,
     socketText: socketText
@@ -41327,16 +41336,21 @@ function Chat() {
 
   var handleSubmit = function handleSubmit(event) {
     event.preventDefault();
-    socket.emit('chat message', socketObject);
-    console.log(socketObject);
+    socket.emit('chat-message-server', socketObject);
+    console.log("a single test");
   };
 
-  socket.on('chat message', function (msg) {
+  var handleInputChant = function handleInputChant(event) {
+    setSocketText(event);
+    console.log(event);
+  };
+
+  socket.on('chat-message-client', function (msg) {
+    console.log(msg);
+    setChatName(msg.socketText);
     setChatText(msg.socketText);
-    setChatName(msg.socketName);
-    console.log(chatText);
   });
-  (0, _react.useEffect)(function (chatText) {
+  (0, _react.useEffect)(function () {
     var _queryString$parse = _queryString.default.parse(location.search),
         name = _queryString$parse.name;
 
@@ -41349,7 +41363,7 @@ function Chat() {
     type: "text",
     value: socketText,
     onChange: function onChange(e) {
-      return setSocketText(e.target.value);
+      return handleInputChant(e.target.value);
     }
   })), _react.default.createElement("input", {
     type: "submit",
@@ -45446,7 +45460,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60365" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54574" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

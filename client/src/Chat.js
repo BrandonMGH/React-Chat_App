@@ -5,13 +5,14 @@ import socketIOClient from "socket.io-client";
 export default function Chat() {
     const [socketName, setSocketName] = useState("")
     const [socketText, setSocketText] = useState("")
+    const [chatName, setChatName] = useState("")
     const [chatText, setChatText] = useState([])
-    const [chatName, setChatName] = useState([])
-
+    const [chatContainerName, setChatContainerName] = useState([])
+    const [chatContainerText, setChatContainerText] = useState([])
 
     const socket = socketIOClient('http://localhost:3000/')
 
-    console.log(chatText)
+   
 
     let socketObject = {
         socketName: socketName,
@@ -21,18 +22,26 @@ export default function Chat() {
     let handleSubmit = (event) => {
 
         event.preventDefault();
-        socket.emit('chat message', socketObject);
-        console.log(socketObject)
+        socket.emit('chat-message-server', socketObject);
+        console.log("a single test")
+    }
+
+    let handleInputChant = (event) => {
+        setSocketText(event)
+        console.log(event)
 
     }
 
-    socket.on('chat message', function (msg) {
+
+    socket.on('chat-message-client', function (msg) {
+        console.log(msg)
+        setChatName(msg.socketText)
         setChatText(msg.socketText)
-        setChatName(msg.socketName)
-        console.log(chatText)
+       
     });
 
-    useEffect((chatText) => {
+
+    useEffect(() => {
 
         const { name } = queryString.parse(location.search)
         console.log(name)
@@ -47,14 +56,15 @@ export default function Chat() {
             <form onSubmit={handleSubmit}>
                 <label>
                     ChatBox:
-          <input
+                <input
                         type="text"
                         value={socketText}
-                        onChange={e => setSocketText(e.target.value)}
+                        onChange={e => handleInputChant(e.target.value)}
                     />
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+            
         </div>
     )
 }

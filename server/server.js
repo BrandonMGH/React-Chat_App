@@ -7,10 +7,13 @@ const io = require('socket.io')(http);
 
 
 io.on('connection', function(socket){
-    socket.on('chat-message-server', function(chatInfo){
-      console.log('message: ' + chatInfo.socketName + " and " + chatInfo.socketText);
-      io.emit('chat-message-client', chatInfo);
+    socket.on('chat-message-server', function(chatText) {
+      console.log(chatText);
+      io.emit('chat-message-client',  chatText);
     });
+    socket.on("disconnect", function (){
+      console.log("Disconnected")
+  });
   });
 
 

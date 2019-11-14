@@ -41306,80 +41306,94 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Chat() {
+  // const [socketName, setSocketName] = useState("")
+  // const [socketText, setSocketText] = useState("")
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
-      socketName = _useState2[0],
-      setSocketName = _useState2[1];
+      chatName = _useState2[0],
+      setChatName = _useState2[1];
 
   var _useState3 = (0, _react.useState)(""),
       _useState4 = _slicedToArray(_useState3, 2),
-      socketText = _useState4[0],
-      setSocketText = _useState4[1];
+      chatText = _useState4[0],
+      setChatText = _useState4[1];
 
-  var _useState5 = (0, _react.useState)(""),
+  var _useState5 = (0, _react.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      chatName = _useState6[0],
-      setChatName = _useState6[1];
+      chatNameContainer = _useState6[0],
+      setChatNameContainer = _useState6[1];
 
-  var _useState7 = (0, _react.useState)(""),
+  var _useState7 = (0, _react.useState)([]),
       _useState8 = _slicedToArray(_useState7, 2),
-      chatText = _useState8[0],
-      setChatText = _useState8[1];
+      chatTextContainer = _useState8[0],
+      setChatTextContainer = _useState8[1];
 
-  var _useState9 = (0, _react.useState)([]),
-      _useState10 = _slicedToArray(_useState9, 2),
-      chatNameContainer = _useState10[0],
-      setChatNameContainer = _useState10[1];
+  var socket = (0, _socket.default)('http://localhost:3000/'); // let socketObject = {
+  //     socketName: socketName,
+  //     socketText: socketText
+  // }
+  // let handleSubmit = (event) => {
+  //     event.preventDefault();
+  //     socket.emit('chat-message-server', socketObject);
+  //     console.log("a single test")
+  // }
+  // let handleInputChant = (event) => {
+  //     setSocketText(event)
+  //     console.log(event)
+  // }
 
-  var _useState11 = (0, _react.useState)([]),
-      _useState12 = _slicedToArray(_useState11, 2),
-      chatTextContainer = _useState12[0],
-      setChatTextContainer = _useState12[1];
-
-  var socket = (0, _socket.default)('http://localhost:3000/');
-  var socketObject = {
-    socketName: socketName,
-    socketText: socketText
-  };
-
-  var handleSubmit = function handleSubmit(event) {
+  var sendText = function sendText(event) {
     event.preventDefault();
-    socket.emit('chat-message-server', socketObject);
-    console.log("a single test");
-  };
 
-  var handleInputChant = function handleInputChant(event) {
-    setSocketText(event);
-    console.log(event);
-  };
+    if (chatText) {
+      socket.emit('chat-message-server', chatText, function () {
+        setChatText("");
+      });
+    }
+  }; // console.log(chatText, chatTextContainer )
+
 
   (0, _react.useEffect)(function () {
     var _queryString$parse = _queryString.default.parse(location.search),
         name = _queryString$parse.name;
 
-    console.log(name);
-    setSocketName(name);
+    console.log(name); // setSocketName(name)
   }, [location.search]);
   (0, _react.useEffect)(function () {
     socket.on('chat-message-client', function (msg) {
-      console.log(msg); // setChatName(msg.socketText)
+      // setChatName(msg.socketText)
       // setChatText(msg.socketText)
-
-      setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [msg.socketText]));
+      setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [msg]));
+      console.log(chatTextContainer);
     }, [chatTextContainer]);
-  });
-  return _react.default.createElement("div", null, _react.default.createElement("p", null, socketName, ":", chatText), _react.default.createElement("form", {
-    onSubmit: handleSubmit
-  }, _react.default.createElement("label", null, "ChatBox:", _react.default.createElement("input", {
-    type: "text",
-    value: socketText,
-    onChange: function onChange(e) {
-      return handleInputChant(e.target.value);
-    }
-  })), _react.default.createElement("input", {
-    type: "submit",
-    value: "Submit"
-  })));
+    return function () {
+      socket.emit('disconnect');
+      socket.off();
+    };
+  }, [chatTextContainer]);
+  return (// <div>
+    //     <p>{socketName}:{chatText}</p>
+    //     <form onSubmit={handleSubmit}>
+    //         <label>
+    //             ChatBox:
+    //         <input
+    //                 type="text"
+    //                 value={socketText}
+    //                 onChange={e => handleInputChant(e.target.value)}
+    //             />
+    //         </label>
+    //         <input type="submit" value="Submit" />
+    //     </form>
+    _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("p", null, chatTextContainer)), _react.default.createElement("div", null, _react.default.createElement("input", {
+      value: chatText,
+      onChange: function onChange(event) {
+        return setChatText(event.target.value);
+      },
+      onKeyPress: function onKeyPress(event) {
+        return event.key === "Enter" ? sendText(event) : null;
+      }
+    })))
+  );
 }
 },{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
@@ -45471,7 +45485,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54574" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58109" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

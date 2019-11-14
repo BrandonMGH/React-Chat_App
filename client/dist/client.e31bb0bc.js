@@ -41306,8 +41306,6 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function Chat() {
-  // const [socketName, setSocketName] = useState("")
-  // const [socketText, setSocketText] = useState("")
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       chatName = _useState2[0],
@@ -41328,11 +41326,7 @@ function Chat() {
       chatTextContainer = _useState8[0],
       setChatTextContainer = _useState8[1];
 
-  var socket = (0, _socket.default)('http://localhost:3000/'); // let socketObject = {
-  //     socketName: socketName,
-  //     socketText: socketText
-  // }
-  // let handleSubmit = (event) => {
+  var socket = (0, _socket.default)('http://localhost:3000/'); // let handleSubmit = (event) => {
   //     event.preventDefault();
   //     socket.emit('chat-message-server', socketObject);
   //     console.log("a single test")
@@ -41357,7 +41351,8 @@ function Chat() {
     var _queryString$parse = _queryString.default.parse(location.search),
         name = _queryString$parse.name;
 
-    console.log(name); // setSocketName(name)
+    console.log(name);
+    setChatName(name);
   }, [location.search]);
   (0, _react.useEffect)(function () {
     socket.on('chat-message-client', function (msg) {
@@ -41384,7 +41379,11 @@ function Chat() {
     //         </label>
     //         <input type="submit" value="Submit" />
     //     </form>
-    _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("p", null, chatTextContainer)), _react.default.createElement("div", null, _react.default.createElement("input", {
+    _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatTextContainer.map(function (text, index) {
+      return _react.default.createElement("li", {
+        key: index
+      }, text);
+    }))), _react.default.createElement("div", null, _react.default.createElement("input", {
       value: chatText,
       onChange: function onChange(event) {
         return setChatText(event.target.value);

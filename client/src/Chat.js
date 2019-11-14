@@ -3,8 +3,6 @@ import queryString from 'query-string';
 import socketIOClient from "socket.io-client";
 
 export default function Chat() {
-    // const [socketName, setSocketName] = useState("")
-    // const [socketText, setSocketText] = useState("")
     const [chatName, setChatName] = useState("")
     const [chatText, setChatText] = useState("")
     const [chatNameContainer, setChatNameContainer] = useState([])
@@ -12,12 +10,6 @@ export default function Chat() {
 
     const socket = socketIOClient('http://localhost:3000/')
 
-
-
-    // let socketObject = {
-    //     socketName: socketName,
-    //     socketText: socketText
-    // }
 
     // let handleSubmit = (event) => {
 
@@ -49,7 +41,7 @@ export default function Chat() {
 
         const { name } = queryString.parse(location.search)
         console.log(name)
-        // setSocketName(name)
+        setChatName(name)
 
 
 
@@ -64,9 +56,9 @@ export default function Chat() {
         }, [chatTextContainer]);
         return () => {
             socket.emit('disconnect');
-      
+
             socket.off();
-          }
+        }
 
     }, [chatTextContainer])
     return (
@@ -85,8 +77,13 @@ export default function Chat() {
         //     </form>
 
         <div>
+            <h1>Welcome {chatName}!</h1>
             <div>
-                <p>{chatTextContainer}</p>
+                <ul>
+                {chatTextContainer.map((text, index) =>
+                        <li key={index}>{text}</li>
+                )}
+                </ul>
             </div>
             <div>
                 <input value={chatText} onChange={event => setChatText(event.target.value)}

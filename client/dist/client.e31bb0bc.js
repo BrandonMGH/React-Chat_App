@@ -41289,6 +41289,14 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
+
+function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -41313,20 +41321,20 @@ function Chat() {
       chatName = _useState6[0],
       setChatName = _useState6[1];
 
-  var _useState7 = (0, _react.useState)([]),
+  var _useState7 = (0, _react.useState)(""),
       _useState8 = _slicedToArray(_useState7, 2),
       chatText = _useState8[0],
       setChatText = _useState8[1];
 
   var _useState9 = (0, _react.useState)([]),
       _useState10 = _slicedToArray(_useState9, 2),
-      chatContainerName = _useState10[0],
-      setChatContainerName = _useState10[1];
+      chatNameContainer = _useState10[0],
+      setChatNameContainer = _useState10[1];
 
   var _useState11 = (0, _react.useState)([]),
       _useState12 = _slicedToArray(_useState11, 2),
-      chatContainerText = _useState12[0],
-      setChatContainerText = _useState12[1];
+      chatTextContainer = _useState12[0],
+      setChatTextContainer = _useState12[1];
 
   var socket = (0, _socket.default)('http://localhost:3000/');
   var socketObject = {
@@ -41345,11 +41353,6 @@ function Chat() {
     console.log(event);
   };
 
-  socket.on('chat-message-client', function (msg) {
-    console.log(msg);
-    setChatName(msg.socketText);
-    setChatText(msg.socketText);
-  });
   (0, _react.useEffect)(function () {
     var _queryString$parse = _queryString.default.parse(location.search),
         name = _queryString$parse.name;
@@ -41357,6 +41360,14 @@ function Chat() {
     console.log(name);
     setSocketName(name);
   }, [location.search]);
+  (0, _react.useEffect)(function () {
+    socket.on('chat-message-client', function (msg) {
+      console.log(msg); // setChatName(msg.socketText)
+      // setChatText(msg.socketText)
+
+      setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [msg.socketText]));
+    }, [chatTextContainer]);
+  });
   return _react.default.createElement("div", null, _react.default.createElement("p", null, socketName, ":", chatText), _react.default.createElement("form", {
     onSubmit: handleSubmit
   }, _react.default.createElement("label", null, "ChatBox:", _react.default.createElement("input", {

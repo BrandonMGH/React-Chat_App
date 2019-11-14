@@ -6,9 +6,9 @@ export default function Chat() {
     const [socketName, setSocketName] = useState("")
     const [socketText, setSocketText] = useState("")
     const [chatName, setChatName] = useState("")
-    const [chatText, setChatText] = useState([])
-    const [chatContainerName, setChatContainerName] = useState([])
-    const [chatContainerText, setChatContainerText] = useState([])
+    const [chatText, setChatText] = useState("")
+    const [chatNameContainer, setChatNameContainer] = useState([])
+    const [chatTextContainer, setChatTextContainer] = useState([])
 
     const socket = socketIOClient('http://localhost:3000/')
 
@@ -33,14 +33,6 @@ export default function Chat() {
     }
 
 
-    socket.on('chat-message-client', function (msg) {
-        console.log(msg)
-        setChatName(msg.socketText)
-        setChatText(msg.socketText)
-       
-    });
-
-
     useEffect(() => {
 
         const { name } = queryString.parse(location.search)
@@ -50,6 +42,17 @@ export default function Chat() {
 
 
     }, [location.search]);
+
+    useEffect(() =>{
+        socket.on('chat-message-client', (msg) => {
+            console.log(msg)
+            // setChatName(msg.socketText)
+            // setChatText(msg.socketText)
+            setChatTextContainer([...chatTextContainer, msg.socketText])
+           
+        }, [chatTextContainer]);
+
+    })
     return (
         <div>
             <p>{socketName}:{chatText}</p>

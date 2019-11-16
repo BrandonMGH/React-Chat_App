@@ -41326,73 +41326,58 @@ function Chat() {
       chatTextContainer = _useState8[0],
       setChatTextContainer = _useState8[1];
 
-  var socket = (0, _socket.default)('http://localhost:3000/'); // let handleSubmit = (event) => {
-  //     event.preventDefault();
-  //     socket.emit('chat-message-server', socketObject);
-  //     console.log("a single test")
-  // }
-  // let handleInputChant = (event) => {
-  //     setSocketText(event)
-  //     console.log(event)
-  // }
+  var socket = (0, _socket.default)('http://localhost:3000/');
+  var chatObject = {
+    chatText: chatText,
+    chatName: chatName
+  };
 
   var sendText = function sendText(event) {
     event.preventDefault();
 
     if (chatText) {
-      socket.emit('chat-message-server', chatText, function () {
-        setChatText("");
-      });
+      socket.emit('chat-message-server', chatText, function () {});
+      setChatText("");
     }
-  }; // console.log(chatText, chatTextContainer )
-
+  };
 
   (0, _react.useEffect)(function () {
     var _queryString$parse = _queryString.default.parse(location.search),
-        name = _queryString$parse.name;
+        name = _queryString$parse.name; // console.log(name)
 
-    console.log(name);
+
     setChatName(name);
+    console.log(name);
+    socket.emit('chat-name-server', name);
   }, [location.search]);
   (0, _react.useEffect)(function () {
-    socket.on('chat-message-client', function (msg) {
-      // setChatName(msg.socketText)
-      // setChatText(msg.socketText)
-      setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [msg]));
-      console.log(chatTextContainer);
+    socket.on('chat-name-client', function (name) {
+      console.log(name);
+    });
+  });
+  (0, _react.useEffect)(function () {
+    socket.on('chat-message-client', function (chatText) {
+      setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [chatText]));
     }, [chatTextContainer]);
     return function () {
       socket.emit('disconnect');
       socket.off();
     };
   }, [chatTextContainer]);
-  return (// <div>
-    //     <p>{socketName}:{chatText}</p>
-    //     <form onSubmit={handleSubmit}>
-    //         <label>
-    //             ChatBox:
-    //         <input
-    //                 type="text"
-    //                 value={socketText}
-    //                 onChange={e => handleInputChant(e.target.value)}
-    //             />
-    //         </label>
-    //         <input type="submit" value="Submit" />
-    //     </form>
-    _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatTextContainer.map(function (text, index) {
-      return _react.default.createElement("li", {
-        key: index
-      }, text);
-    }))), _react.default.createElement("div", null, _react.default.createElement("input", {
-      value: chatText,
-      onChange: function onChange(event) {
-        return setChatText(event.target.value);
-      },
-      onKeyPress: function onKeyPress(event) {
-        return event.key === "Enter" ? sendText(event) : null;
-      }
-    })))
-  );
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatTextContainer.map(function (text, index) {
+    return _react.default.createElement("li", {
+      key: index
+    }, text);
+  }))), _react.default.createElement("div", null, _react.default.createElement("input", {
+    placeholder: "Press enter to send text",
+    value: chatText,
+    onChange: function onChange(event) {
+      return setChatText(event.target.value);
+    },
+    onKeyPress: function onKeyPress(event) {
+      return event.key === "Enter" ? sendText(event) : null;
+    }
+  })));
 }
 },{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js"}],"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js":[function(require,module,exports) {
 "use strict";
@@ -45484,7 +45469,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58109" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51025" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

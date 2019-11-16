@@ -41344,9 +41344,10 @@ function Chat() {
     //     console.log(name)
     //     setChatName(name)   
     // });
-    socket.on('chat-message-client', function (chatText) {
-      console.log(name);
-      console.log(chatText); // setChatName(name.name)   
+    socket.on('chat-message-client', function (textContent) {
+      var chatMessage = textContent.chatText;
+      var chatName = textContent.name;
+      console.log(chatMessage, chatName); // setChatName(name.name)   
       // setChatTextContainer([...chatTextContainer, chatText.chatText])
     }, [chatTextContainer]);
     return function () {

@@ -41,9 +41,10 @@ export default function Chat() {
         //     console.log(name)
         //     setChatName(name)   
         // });
-        socket.on('chat-message-client', (chatText) => {
-            console.log(name)
-            console.log(chatText)
+        socket.on('chat-message-client', (textContent) => {
+            let chatMessage = textContent.chatText
+            let chatName = textContent.name
+            console.log(chatMessage, chatName)
             // setChatName(name.name)   
             // setChatTextContainer([...chatTextContainer, chatText.chatText])
         }, [chatTextContainer]);

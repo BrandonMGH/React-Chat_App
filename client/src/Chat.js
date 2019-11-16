@@ -30,23 +30,22 @@ export default function Chat() {
     useEffect(() => {
 
         const { name } = queryString.parse(location.search)
-        // console.log(name)
-        setChatName(name)
-        console.log(name)
         socket.emit('chat-name-server', (name))
 
 
     }, [location.search]);
 
-    useEffect(()=> {
-        socket.on('chat-name-client', (name)=> {
-            console.log(name)
-        })
-    })
 
     useEffect(() => {
+        // socket.on('chat-name-client', (name)=> {
+        //     console.log(name)
+        //     setChatName(name)   
+        // });
         socket.on('chat-message-client', (chatText) => {
-            setChatTextContainer([...chatTextContainer, chatText])
+            console.log(name)
+            console.log(chatText)
+            // setChatName(name)   
+            // setChatTextContainer([...chatTextContainer, chatText])
         }, [chatTextContainer]);
         return () => {
             socket.emit('disconnect');
@@ -61,8 +60,8 @@ export default function Chat() {
             <h1>Welcome {chatName}!</h1>
             <div>
                 <ul>
-                    {chatTextContainer.map((text, index) =>
-                        <li key={index}>{text}</li>
+                    {chatName}{chatTextContainer.map((text, index) =>
+                        <li key={index}>{chatName} : {text}</li>
                     )}
                 </ul>
             </div>

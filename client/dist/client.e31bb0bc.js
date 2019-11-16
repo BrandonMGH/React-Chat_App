@@ -41289,14 +41289,6 @@ function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return 
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
 
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -41343,31 +41335,29 @@ function Chat() {
 
   (0, _react.useEffect)(function () {
     var _queryString$parse = _queryString.default.parse(location.search),
-        name = _queryString$parse.name; // console.log(name)
+        name = _queryString$parse.name;
 
-
-    setChatName(name);
-    console.log(name);
     socket.emit('chat-name-server', name);
   }, [location.search]);
   (0, _react.useEffect)(function () {
-    socket.on('chat-name-client', function (name) {
-      console.log(name);
-    });
-  });
-  (0, _react.useEffect)(function () {
+    // socket.on('chat-name-client', (name)=> {
+    //     console.log(name)
+    //     setChatName(name)   
+    // });
     socket.on('chat-message-client', function (chatText) {
-      setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [chatText]));
+      console.log(name);
+      console.log(chatText); // setChatName(name)   
+      // setChatTextContainer([...chatTextContainer, chatText])
     }, [chatTextContainer]);
     return function () {
       socket.emit('disconnect');
       socket.off();
     };
   }, [chatTextContainer]);
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatTextContainer.map(function (text, index) {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatName, chatTextContainer.map(function (text, index) {
     return _react.default.createElement("li", {
       key: index
-    }, text);
+    }, chatName, " : ", text);
   }))), _react.default.createElement("div", null, _react.default.createElement("input", {
     placeholder: "Press enter to send text",
     value: chatText,

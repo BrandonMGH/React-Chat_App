@@ -7,13 +7,9 @@ export default function Chat() {
     const [chatText, setChatText] = useState("")
     const [chatNameContainer, setChatNameContainer] = useState([])
     const [chatTextContainer, setChatTextContainer] = useState([])
-
     const socket = socketIOClient('http://localhost:3000/')
 
-    let chatObject = {
-        chatText: chatText,
-        chatName: chatName
-    }
+    
 
     const sendText = (event) => {
         event.preventDefault();
@@ -31,7 +27,7 @@ export default function Chat() {
 
         const { name } = queryString.parse(location.search)
         socket.emit('chat-name-server', (name))
-
+        setChatName(name)
 
     }, [location.search]);
 
@@ -42,11 +38,10 @@ export default function Chat() {
         //     setChatName(name)   
         // });
         socket.on('chat-message-client', (textContent) => {
-            let chatMessage = textContent.chatText
-            let chatName = textContent.name
-            console.log(chatMessage, chatName)
-            // setChatName(name.name)   
-            // setChatTextContainer([...chatTextContainer, chatText.chatText])
+            console.log(textContent)
+            // console.log(chatMessage, chatName)
+            // setChatName(chatName)   
+            setChatTextContainer([...chatTextContainer, textContent])
         }, [chatTextContainer]);
         return () => {
             socket.emit('disconnect');

@@ -36,9 +36,7 @@ io.on('connection', function(socket){
       let textContent = (user + ":" + chatText)
       io.emit('chat-message-client', textContent);
     });
-    socket.on("disconnect", function (){
-      console.log("Disconnected")
-  });
+    
   });
 
 

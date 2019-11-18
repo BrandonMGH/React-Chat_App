@@ -41318,13 +41318,8 @@ function Chat() {
 
   var _useState5 = (0, _react.useState)([]),
       _useState6 = _slicedToArray(_useState5, 2),
-      chatNameContainer = _useState6[0],
-      setChatNameContainer = _useState6[1];
-
-  var _useState7 = (0, _react.useState)([]),
-      _useState8 = _slicedToArray(_useState7, 2),
-      chatTextContainer = _useState8[0],
-      setChatTextContainer = _useState8[1];
+      chatTextContainer = _useState6[0],
+      setChatTextContainer = _useState6[1];
 
   var socket = (0, _socket.default)('http://localhost:3000/');
 
@@ -41333,7 +41328,7 @@ function Chat() {
     setChatText("");
   };
 
-  var sendText = function sendText(event, callback) {
+  var sendChatInfo = function sendChatInfo(event, callback) {
     event.preventDefault();
 
     if (chatText) {
@@ -41341,7 +41336,6 @@ function Chat() {
           name = _queryString$parse.name;
 
       socket.emit('chat-name-server', name);
-      setChatName(name);
       callback(chatText);
     }
   };
@@ -41359,7 +41353,6 @@ function Chat() {
       setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [textContent]));
     }, [chatTextContainer]);
     return function () {
-      socket.emit('disconnect');
       socket.off();
     };
   }, [chatTextContainer]);
@@ -41374,7 +41367,7 @@ function Chat() {
       return setChatText(event.target.value);
     },
     onKeyPress: function onKeyPress(event) {
-      return event.key === "Enter" ? sendText(event, chatSend) : null;
+      return event.key === "Enter" ? sendChatInfo(event, chatSend) : null;
     }
   })));
 }

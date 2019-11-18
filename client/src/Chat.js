@@ -5,7 +5,6 @@ import socketIOClient from "socket.io-client";
 export default function Chat() {
     const [chatName, setChatName] = useState("")
     const [chatText, setChatText] = useState("")
-    const [chatNameContainer, setChatNameContainer] = useState([])
     const [chatTextContainer, setChatTextContainer] = useState([])
     const socket = socketIOClient('http://localhost:3000/')
 
@@ -14,12 +13,12 @@ export default function Chat() {
         socket.emit('chat-message-server', chatText)
         setChatText("");  
     }
-    const sendText = (event, callback) => {
+    const sendChatInfo = (event, callback) => {
         event.preventDefault();
         if (chatText) {
             const {name}  = queryString.parse(location.search)
             socket.emit('chat-name-server', (name))
-            setChatName(name)
+            
             callback(chatText)
         }
 
@@ -42,8 +41,6 @@ export default function Chat() {
             setChatTextContainer([...chatTextContainer, textContent])
         }, [chatTextContainer]);
         return () => {
-            socket.emit('disconnect');
-
             socket.off();
         }
 
@@ -61,7 +58,7 @@ export default function Chat() {
             </div>
             <div>
                 <input placeholder="Press enter to send text" value={chatText} onChange={event => setChatText(event.target.value)}
-                    onKeyPress={event => event.key === "Enter" ? sendText(event, chatSend) : null}
+                    onKeyPress={event => event.key === "Enter" ? sendChatInfo(event, chatSend) : null}
                 />
             </div>
         </div>

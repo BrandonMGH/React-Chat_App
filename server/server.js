@@ -5,7 +5,10 @@ const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
 const users = []
-let id = ""
+let user; 
+let IDs = []
+let ID = ""
+
 
 const getUser = (object, callback) => {
   callback(object)
@@ -13,20 +16,20 @@ const getUser = (object, callback) => {
 
 io.on('connection', function(socket){
     socket.on('chat-name-server', name => {
-      // users[socket.id] = name
-      // console.log(name)   
-      id = socket.id
-      let newUser = {id, name}
+      ID = socket.id
+      IDs.push(ID)
+      let newUser = {ID, name}
       users.push(newUser)
-      // console.log(users)
       io.emit('chat-name-client', name)
     });
-    socket.on('chat-message-server', function(chatText) {
-      let user; 
-      console.log(id)
+    socket.on('chat-message-server', function(chatText) { 
       getUser(users, () =>{
         for(let i=0; i < users.length; i++){
-          user = (users[i].id)
+          for(let j =0; j < IDs.length; j ++){
+           if(users[i].ID === IDs[j]){
+             user = (users[i].name)
+           }
+          }
         }
       })
       console.log(chatText, user)

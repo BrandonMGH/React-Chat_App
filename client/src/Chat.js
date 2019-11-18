@@ -10,14 +10,17 @@ export default function Chat() {
     const socket = socketIOClient('http://localhost:3000/')
 
     
-
-    const sendText = (event) => {
+    const chatSend = (chatText) =>{
+        socket.emit('chat-message-server', chatText)
+        setChatText("");  
+    }
+    const sendText = (event, callback) => {
         event.preventDefault();
         if (chatText) {
-            socket.emit('chat-message-server', chatText, () => {
-
-            })
-            setChatText("");
+            const {name}  = queryString.parse(location.search)
+            socket.emit('chat-name-server', (name))
+            setChatName(name)
+            callback(chatText)
         }
 
     }
@@ -25,7 +28,7 @@ export default function Chat() {
 
     useEffect(() => {
 
-        const { name } = queryString.parse(location.search)
+        const {name}  = queryString.parse(location.search)
         socket.emit('chat-name-server', (name))
         setChatName(name)
 
@@ -33,14 +36,9 @@ export default function Chat() {
 
 
     useEffect(() => {
-        // socket.on('chat-name-client', (name)=> {
-        //     console.log(name)
-        //     setChatName(name)   
-        // });
+       
         socket.on('chat-message-client', (textContent) => {
-            console.log(textContent)
-            // console.log(chatMessage, chatName)
-            // setChatName(chatName)   
+            console.log(textContent)  
             setChatTextContainer([...chatTextContainer, textContent])
         }, [chatTextContainer]);
         return () => {
@@ -56,14 +54,14 @@ export default function Chat() {
             <h1>Welcome {chatName}!</h1>
             <div>
                 <ul>
-                    {chatName}{chatTextContainer.map((text, index) =>
-                        <li key={index}>{chatName} : {text}</li>
+                  {chatTextContainer.map((text, index) =>
+                        <li key={index}>{text}</li>
                     )}
                 </ul>
             </div>
             <div>
                 <input placeholder="Press enter to send text" value={chatText} onChange={event => setChatText(event.target.value)}
-                    onKeyPress={event => event.key === "Enter" ? sendText(event) : null}
+                    onKeyPress={event => event.key === "Enter" ? sendText(event, chatSend) : null}
                 />
             </div>
         </div>

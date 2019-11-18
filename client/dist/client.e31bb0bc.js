@@ -41328,31 +41328,34 @@ function Chat() {
 
   var socket = (0, _socket.default)('http://localhost:3000/');
 
-  var sendText = function sendText(event) {
+  var chatSend = function chatSend(chatText) {
+    socket.emit('chat-message-server', chatText);
+    setChatText("");
+  };
+
+  var sendText = function sendText(event, callback) {
     event.preventDefault();
 
     if (chatText) {
-      socket.emit('chat-message-server', chatText, function () {});
-      setChatText("");
+      var _queryString$parse = _queryString.default.parse(location.search),
+          name = _queryString$parse.name;
+
+      socket.emit('chat-name-server', name);
+      setChatName(name);
+      callback(chatText);
     }
   };
 
   (0, _react.useEffect)(function () {
-    var _queryString$parse = _queryString.default.parse(location.search),
-        name = _queryString$parse.name;
+    var _queryString$parse2 = _queryString.default.parse(location.search),
+        name = _queryString$parse2.name;
 
     socket.emit('chat-name-server', name);
     setChatName(name);
   }, [location.search]);
   (0, _react.useEffect)(function () {
-    // socket.on('chat-name-client', (name)=> {
-    //     console.log(name)
-    //     setChatName(name)   
-    // });
     socket.on('chat-message-client', function (textContent) {
-      console.log(textContent); // console.log(chatMessage, chatName)
-      // setChatName(chatName)   
-
+      console.log(textContent);
       setChatTextContainer([].concat(_toConsumableArray(chatTextContainer), [textContent]));
     }, [chatTextContainer]);
     return function () {
@@ -41360,10 +41363,10 @@ function Chat() {
       socket.off();
     };
   }, [chatTextContainer]);
-  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatName, chatTextContainer.map(function (text, index) {
+  return _react.default.createElement("div", null, _react.default.createElement("h1", null, "Welcome ", chatName, "!"), _react.default.createElement("div", null, _react.default.createElement("ul", null, chatTextContainer.map(function (text, index) {
     return _react.default.createElement("li", {
       key: index
-    }, chatName, " : ", text);
+    }, text);
   }))), _react.default.createElement("div", null, _react.default.createElement("input", {
     placeholder: "Press enter to send text",
     value: chatText,
@@ -41371,7 +41374,7 @@ function Chat() {
       return setChatText(event.target.value);
     },
     onKeyPress: function onKeyPress(event) {
-      return event.key === "Enter" ? sendText(event) : null;
+      return event.key === "Enter" ? sendText(event, chatSend) : null;
     }
   })));
 }

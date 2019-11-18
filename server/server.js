@@ -6,9 +6,10 @@ const io = require('socket.io')(http);
 
 const users = []
 
-const getUser = (socketId) => {
-    console.log(users)
+const getUser = (object, callback) => {
+  callback(object)
 }
+
 io.on('connection', function(socket){
     socket.on('chat-name-server', name => {
       // users[socket.id] = name
@@ -20,7 +21,9 @@ io.on('connection', function(socket){
       io.emit('chat-name-client', name)
     });
     socket.on('chat-message-server', function(chatText) {
-      let user = getUser(socket.id)
+      let user = getUser(users, () =>{
+        return(users[0].id)
+      })
       console.log(chatText, user)
       // let textContent = (users[socket.id] + ":" + chatText)
       io.emit('chat-message-client', chatText);

@@ -14,6 +14,10 @@ const getUser = (object, callback) => {
   callback(object)
 }
 
+app.get('/', (req, res) => {
+  res.send("server is running")
+})
+
 io.on('connection', function(socket){
     socket.on('chat-name-server', name => {
       ID = socket.id

@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/server.js"
+    "start": "babel-watch server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,14 @@
   "bugs": {
     "url": "https://github.com/BrandonMGH/React-Chat_App/issues"
   },
-  "homepage": "https://github.com/BrandonMGH/React-Chat_App#readme"
+  "homepage": "https://github.com/BrandonMGH/React-Chat_App#readme",
+  "dependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/node": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "babel-watch": "^7.0.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0"
+  }
 }

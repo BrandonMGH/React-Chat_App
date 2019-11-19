@@ -1,0 +1,20 @@
+{
+  "name": "React-Chat_App",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrandonMGH/React-Chat_App.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BrandonMGH/React-Chat_App/issues"
+  },
+  "homepage": "https://github.com/BrandonMGH/React-Chat_App#readme"
+}

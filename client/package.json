@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel --port 3001 index.html",
-    "build": "parcel build index.html --public-url ./"
   },
   "keywords": [],
   "author": "",

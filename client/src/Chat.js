@@ -6,7 +6,7 @@ export default function Chat() {
     const [chatName, setChatName] = useState("")
     const [chatText, setChatText] = useState("")
     const [chatTextContainer, setChatTextContainer] = useState([])
-    const socket = socketIOClient('http://localhost:3000/')
+    const socket = socketIOClient('https://react-socket-chat-app.herokuapp.com/')
 
     
     const chatSend = (chatText) =>{

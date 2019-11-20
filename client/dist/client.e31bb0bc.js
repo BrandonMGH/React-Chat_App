@@ -41321,7 +41321,7 @@ function Chat() {
       chatTextContainer = _useState6[0],
       setChatTextContainer = _useState6[1];
 
-  var socket = (0, _socket.default)('http://localhost:3000/');
+  var socket = (0, _socket.default)('https://react-socket-chat-app.herokuapp.com/');
 
   var chatSend = function chatSend(chatText) {
     socket.emit('chat-message-server', chatText);
@@ -45461,7 +45461,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54751" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60798" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

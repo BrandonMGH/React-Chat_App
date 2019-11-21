@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react"
 import queryString from 'query-string';
-import socketIOClient from "socket.io-client";
+import socketIOClient from 'socket.io-client';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import { withTheme } from "@material-ui/styles";
+import friendBackground from './friendBackground.png'
 
 // ** CSS STYLES ** // 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        backgroundColor: 'red',
-        paddingTop: '50px'
+        backgroundImage: `url(${friendBackground})`,
+        paddingTop: '50px',
+        backgroundSize: 'cover'
     },
     paper: {
         padding: theme.spacing(2),
@@ -78,12 +81,16 @@ export default function Chat() {
             <Grid container spacing={3}>
                 <Grid item xs={3}> </Grid>
                 <Grid item xs={6}>
-                    <h1 style={{ textAlign: "center" }}>Socket React Chat</h1>
+                    <div style={{ textAlign: "center", color: "white"}}>
+                    <h1>Socket React Chat</h1>
+                    <p> a chat app created with the use of React, Express and Socket.Io</p>
                     <Paper className={classes.paper}>
                         {chatTextContainer.map((text, index) =>
                             <p key={index} style={{ textAlign: "left" }}>{text}</p>
                         )}
+    
                     </Paper>
+                    </div>
                 </Grid>
                 <Grid item xs={3}> </Grid>
             </Grid>
@@ -93,7 +100,7 @@ export default function Chat() {
                     <TextField
                     className={classes.container}
                         id="standard-full-width"
-                        label="ChatBox"
+                        // label="ChatBox"
                         style={{ margin: 8 }}
                         placeholder="Press enter to send text"
                         fullWidth
@@ -104,6 +111,7 @@ export default function Chat() {
                         InputLabelProps={{
                             shrink: true,
                         }}
+                        style={{backgroundColor: "white"}}
                     />
                 </Grid>
                 <Grid item xs={3}></Grid>

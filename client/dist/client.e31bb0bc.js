@@ -60709,7 +60709,9 @@ Object.defineProperty(exports, "default", {
 var _TextField = _interopRequireDefault(require("./TextField"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./TextField":"node_modules/@material-ui/core/esm/TextField/TextField.js"}],"src/Chat.js":[function(require,module,exports) {
+},{"./TextField":"node_modules/@material-ui/core/esm/TextField/TextField.js"}],"src/friendBackground.png":[function(require,module,exports) {
+module.exports = "/friendBackground.c166a6b1.png";
+},{}],"src/Chat.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -60731,11 +60733,17 @@ var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
 
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
 
+var _styles2 = require("@material-ui/styles");
+
+var _friendBackground = _interopRequireDefault(require("./friendBackground.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
@@ -60758,8 +60766,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
       flexGrow: 1,
-      backgroundColor: 'red',
-      paddingTop: '50px'
+      backgroundImage: "url(".concat(_friendBackground.default, ")"),
+      paddingTop: '50px',
+      backgroundSize: 'cover'
     },
     paper: {
       padding: theme.spacing(2),
@@ -60839,11 +60848,12 @@ function Chat() {
   }, " "), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 6
-  }, _react.default.createElement("h1", {
+  }, _react.default.createElement("div", {
     style: {
-      textAlign: "center"
+      textAlign: "center",
+      color: "white"
     }
-  }, "Socket React Chat"), _react.default.createElement(_Paper.default, {
+  }, _react.default.createElement("h1", null, "Socket React Chat"), _react.default.createElement("p", null, " a chat app created with the use of React, Express and Socket.Io"), _react.default.createElement(_Paper.default, {
     className: classes.paper
   }, chatTextContainer.map(function (text, index) {
     return _react.default.createElement("p", {
@@ -60852,7 +60862,7 @@ function Chat() {
         textAlign: "left"
       }
     }, text);
-  }))), _react.default.createElement(_Grid.default, {
+  })))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 3
   }, " ")), _react.default.createElement(_Grid.default, {
@@ -60864,10 +60874,10 @@ function Chat() {
   }), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 6
-  }, _react.default.createElement(_TextField.default, {
+  }, _react.default.createElement(_TextField.default, _defineProperty({
     className: classes.container,
-    id: "standard-full-width",
-    label: "ChatBox",
+    id: "standard-full-width" // label="ChatBox"
+    ,
     style: {
       margin: 8
     },
@@ -60884,12 +60894,14 @@ function Chat() {
     InputLabelProps: {
       shrink: true
     }
-  })), _react.default.createElement(_Grid.default, {
+  }, "style", {
+    backgroundColor: "white"
+  }))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 3
   })));
 }
-},{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/TextField":"node_modules/@material-ui/core/esm/TextField/index.js"}],"node_modules/resolve-pathname/esm/resolve-pathname.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/TextField":"node_modules/@material-ui/core/esm/TextField/index.js","@material-ui/styles":"node_modules/@material-ui/styles/esm/index.js","./friendBackground.png":"src/friendBackground.png"}],"node_modules/resolve-pathname/esm/resolve-pathname.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

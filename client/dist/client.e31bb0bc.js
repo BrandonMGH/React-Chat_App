@@ -60762,7 +60762,10 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
     paper: {
       padding: theme.spacing(2),
       textAlign: 'center',
-      color: theme.palette.text.secondary
+      color: theme.palette.text.secondary,
+      height: '50vh',
+      overflow: 'auto',
+      flex: 'auto'
     },
     container: {
       display: 'flex',
@@ -63862,7 +63865,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61933" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60798" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

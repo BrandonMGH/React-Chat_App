@@ -4,6 +4,7 @@ import socketIOClient from "socket.io-client";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
 
 // ** CSS STYLES ** // 
 const useStyles = makeStyles(theme => ({
@@ -13,7 +14,11 @@ const useStyles = makeStyles(theme => ({
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
-        color: theme.palette.text.secondary,
+        color: theme.palette.text.secondary
+    },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
     },
 }));
 
@@ -64,13 +69,14 @@ export default function Chat() {
 
     }, [chatTextContainer])
     return (
-        <div className={classes.root}>
+        <div className={classes.root} >
             <Grid container spacing={3}>
                 <Grid item xs={3}> </Grid>
                 <Grid item xs={6}>
+                    <h1 style={{ textAlign: "center" }}>Socket React Chat</h1>
                     <Paper className={classes.paper}>
                         {chatTextContainer.map((text, index) =>
-                            <p key={index}>{text}</p>
+                            <p key={index} style={{ textAlign: "left" }}>{text}</p>
                         )}
                     </Paper>
                 </Grid>
@@ -79,8 +85,21 @@ export default function Chat() {
             <Grid container spacing={3}>
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
-                    <input placeholder="Press enter to send text" value={chatText} onChange={event => setChatText(event.target.value)}
-                        onKeyPress={event => event.key === "Enter" ? sendChatInfo(event, chatSend) : null}/>
+                    <TextField
+                    className={classes.container}
+                        id="standard-full-width"
+                        label="ChatBox"
+                        style={{ margin: 8 }}
+                        placeholder="Press enter to send text"
+                        fullWidth
+                        margin="normal"
+                        value={chatText}
+                        onChange={event => setChatText(event.target.value)}
+                        onKeyPress={event => event.key === "Enter" ? sendChatInfo(event, chatSend) : null}
+                        InputLabelProps={{
+                            shrink: true,
+                        }}
+                    />
                 </Grid>
                 <Grid item xs={3}></Grid>
             </Grid>

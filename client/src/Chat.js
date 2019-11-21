@@ -10,14 +10,16 @@ import TextField from '@material-ui/core/TextField';
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        backgroundColor: 'red',
+        paddingTop: '50px'
     },
     paper: {
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        height: '50vh',
+        height: '70vh',
         overflow: 'auto',
-        flex: 'auto'
+        flex: 'auto',
     },
     container: {
         display: 'flex',

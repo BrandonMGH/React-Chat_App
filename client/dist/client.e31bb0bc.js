@@ -60757,13 +60757,15 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
-      flexGrow: 1
+      flexGrow: 1,
+      backgroundColor: 'red',
+      paddingTop: '50px'
     },
     paper: {
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      height: '50vh',
+      height: '70vh',
       overflow: 'auto',
       flex: 'auto'
     },
@@ -63865,7 +63867,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60798" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61933" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

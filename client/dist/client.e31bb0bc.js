@@ -63797,17 +63797,27 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
       flexGrow: 1,
       backgroundColor: "black"
     },
-    paper: {
+    paper: _defineProperty({
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
-      height: "30vh"
+      height: "30vh",
+      backgroundColor: "black"
+    }, "color", "white"),
+    chatTitle: {},
+    chatBox: {
+      textAlign: "center",
+      border: "2px solid white",
+      backgroundColor: "teal",
+      padding: "5%"
     }
   };
 });
@@ -63837,10 +63847,10 @@ function Join() {
   }, _react.default.createElement(_Paper.default, {
     className: classes.paper
   }, _react.default.createElement("div", {
-    style: {
-      textAlign: "center"
-    }
-  }, _react.default.createElement("div", null, _react.default.createElement("h1", null, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("input", {
+    className: classes.chatBox
+  }, _react.default.createElement("div", null, _react.default.createElement("h1", {
+    className: classes.chatTitle
+  }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("input", {
     onChange: function onChange(event) {
       return setChatName(event.target.value);
     }
@@ -63941,7 +63951,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61933" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60798" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

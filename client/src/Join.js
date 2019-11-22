@@ -14,7 +14,18 @@ const useStyles = makeStyles(theme => ({
         textAlign: 'center',
         color: theme.palette.text.secondary,
         height: "30vh",
+        backgroundColor: "black",
+        color: "white"
     },
+    chatTitle:{
+     
+    },
+    chatBox: {
+        textAlign: "center",
+        border: "2px solid white",
+        backgroundColor: "teal",
+        padding: "5%"
+    }
 }));
 
 
@@ -28,9 +39,9 @@ export default function Join() {
                 </Grid>
                 <Grid item xs={4} style={{paddingBottom: "15%", paddingTop: "15%"}}>
                     <Paper className={classes.paper}>
-                        <div style={{ textAlign: "center" }}>
+                        <div className={classes.chatBox}>
                             <div>
-                                <h1> Join The Conversation</h1>
+                                <h1 className={classes.chatTitle}> Join The Conversation</h1>
                             </div>
                             <hr></hr>
                             <div>

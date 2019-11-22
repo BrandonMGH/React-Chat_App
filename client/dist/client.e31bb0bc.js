@@ -65552,7 +65552,7 @@ function Join() {
   }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement("div", null, _react.default.createElement(_TextField.default, {
-    label: "Brandon",
+    label: "Name",
     id: "margin-none",
     defaultValue: "Default Value",
     className: classes.textField,
@@ -65649,7 +65649,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60798" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61933" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

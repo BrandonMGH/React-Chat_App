@@ -67,7 +67,7 @@ export default function Join() {
                                 <div className={classes.container}>
                                     <div>
                                         <TextField
-                                            label="Brandon"
+                                            label="Name"
                                             id="margin-none"
                                             defaultValue="Default Value"
                                             className={classes.textField}

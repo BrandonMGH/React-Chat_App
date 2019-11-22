@@ -63799,26 +63799,26 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
       flexGrow: 1,
       backgroundColor: "black"
     },
-    paper: _defineProperty({
+    paper: {
       padding: theme.spacing(2),
       textAlign: 'center',
       color: theme.palette.text.secondary,
       height: "30vh",
       backgroundColor: "black"
-    }, "color", "white"),
-    chatTitle: {},
+    },
+    chatTitle: {
+      color: "black"
+    },
     chatBox: {
       textAlign: "center",
-      border: "2px solid white",
-      backgroundColor: "teal",
+      border: "2px solid black",
+      backgroundColor: "white",
       padding: "5%"
     },
     container: {
@@ -63829,7 +63829,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       marginLeft: theme.spacing(1),
       marginRight: theme.spacing(1),
       width: 200,
-      color: 'white'
+      textColor: 'white'
     }
   };
 });
@@ -63865,17 +63865,10 @@ function Join() {
   }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("div", {
     className: classes.container
   }, _react.default.createElement("div", null, _react.default.createElement(_TextField.default, {
-    id: "standard-full-width",
-    label: "Name",
-    style: {
-      margin: 8
-    },
-    placeholder: "Placeholder",
-    fullWidth: true,
-    margin: "normal",
-    InputLabelProps: {
-      shrink: true
-    },
+    label: "Brandon",
+    id: "margin-none",
+    defaultValue: "Default Value",
+    className: classes.textField,
     onChange: function onChange(event) {
       return setChatName(event.target.value);
     }

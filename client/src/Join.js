@@ -17,15 +17,15 @@ const useStyles = makeStyles(theme => ({
         color: theme.palette.text.secondary,
         height: "30vh",
         backgroundColor: "black",
-        color: "white"
+
     },
     chatTitle: {
-
+        color:"black"
     },
     chatBox: {
         textAlign: "center",
-        border: "2px solid white",
-        backgroundColor: "teal",
+        border: "2px solid black",
+        backgroundColor: "white",
         padding: "5%"
     },
     container: {
@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft: theme.spacing(1),
         marginRight: theme.spacing(1),
         width: 200,
-        color: 'white'
+        textColor: 'white'
     },
 }));
 
@@ -61,15 +61,10 @@ export default function Join() {
                                 <div className={classes.container}>
                                     <div>
                                         <TextField
-                                            id="standard-full-width"
-                                            label="Name"
-                                            style={{ margin: 8 }}
-                                            placeholder="Placeholder"
-                                            fullWidth
-                                            margin="normal"
-                                            InputLabelProps={{
-                                                shrink: true,
-                                            }}
+                                            label="Brandon"
+                                            id="margin-none"
+                                            defaultValue="Default Value"
+                                            className={classes.textField}
                                             onChange={event => setChatName(event.target.value)}
                                         />
                                     </div>

@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import TextField from '@material-ui/core/TextField';
+
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -17,15 +19,25 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: "black",
         color: "white"
     },
-    chatTitle:{
-     
+    chatTitle: {
+
     },
     chatBox: {
         textAlign: "center",
         border: "2px solid white",
         backgroundColor: "teal",
         padding: "5%"
-    }
+    },
+    container: {
+        display: 'flex',
+        flexWrap: 'wrap',
+    },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        width: 200,
+        color: 'white'
+    },
 }));
 
 
@@ -37,7 +49,8 @@ export default function Join() {
             <Grid container spacing={3}>
                 <Grid item xs>
                 </Grid>
-                <Grid item xs={4} style={{paddingBottom: "15%", paddingTop: "15%"}}>
+                <Grid item xs={4} style={{ paddingBottom: "15%", paddingTop: "15%" }}>
+
                     <Paper className={classes.paper}>
                         <div className={classes.chatBox}>
                             <div>
@@ -45,7 +58,22 @@ export default function Join() {
                             </div>
                             <hr></hr>
                             <div>
-                                <input onChange={event => setChatName(event.target.value)} />
+                                <div className={classes.container}>
+                                    <div>
+                                        <TextField
+                                            id="standard-full-width"
+                                            label="Name"
+                                            style={{ margin: 8 }}
+                                            placeholder="Placeholder"
+                                            fullWidth
+                                            margin="normal"
+                                            InputLabelProps={{
+                                                shrink: true,
+                                            }}
+                                            onChange={event => setChatName(event.target.value)}
+                                        />
+                                    </div>
+                                </div>
                             </div>
                             <div>
                                 <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>

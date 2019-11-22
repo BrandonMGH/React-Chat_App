@@ -63783,6 +63783,8 @@ var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
 
 var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
 
+var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -63818,6 +63820,16 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       border: "2px solid white",
       backgroundColor: "teal",
       padding: "5%"
+    },
+    container: {
+      display: 'flex',
+      flexWrap: 'wrap'
+    },
+    textField: {
+      marginLeft: theme.spacing(1),
+      marginRight: theme.spacing(1),
+      width: 200,
+      color: 'white'
     }
   };
 });
@@ -63850,11 +63862,24 @@ function Join() {
     className: classes.chatBox
   }, _react.default.createElement("div", null, _react.default.createElement("h1", {
     className: classes.chatTitle
-  }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("input", {
+  }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("div", {
+    className: classes.container
+  }, _react.default.createElement("div", null, _react.default.createElement(_TextField.default, {
+    id: "standard-full-width",
+    label: "Name",
+    style: {
+      margin: 8
+    },
+    placeholder: "Placeholder",
+    fullWidth: true,
+    margin: "normal",
+    InputLabelProps: {
+      shrink: true
+    },
     onChange: function onChange(event) {
       return setChatName(event.target.value);
     }
-  })), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+  })))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
     onClick: function onClick(event) {
       return !chatName ? event.preventDefault() : null;
     },
@@ -63880,7 +63905,7 @@ function Join() {
   // </div>
   ;
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/TextField":"node_modules/@material-ui/core/esm/TextField/index.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

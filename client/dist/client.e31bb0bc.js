@@ -63777,6 +63777,14 @@ var _react = _interopRequireWildcard(require("react"));
 
 var _reactRouterDom = require("react-router-dom");
 
+var _styles = require("@material-ui/core/styles");
+
+var _Paper = _interopRequireDefault(require("@material-ui/core/Paper"));
+
+var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || typeof obj !== "object" && typeof obj !== "function") { return { default: obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj.default = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
@@ -63789,13 +63797,50 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
+var useStyles = (0, _styles.makeStyles)(function (theme) {
+  return {
+    root: {
+      flexGrow: 1,
+      backgroundColor: "black"
+    },
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
+      height: "30vh"
+    }
+  };
+});
+
 function Join() {
   var _useState = (0, _react.useState)(""),
       _useState2 = _slicedToArray(_useState, 2),
       chatName = _useState2[0],
       setChatName = _useState2[1];
 
-  return _react.default.createElement("div", null, _react.default.createElement("div", null, _react.default.createElement("h1", null, " Join The Conversation")), _react.default.createElement("div", null, _react.default.createElement("input", {
+  var classes = useStyles();
+  return _react.default.createElement("div", {
+    className: classes.root
+  }, _react.default.createElement(_Grid.default, {
+    container: true,
+    spacing: 3
+  }, _react.default.createElement(_Grid.default, {
+    item: true,
+    xs: true
+  }), _react.default.createElement(_Grid.default, {
+    item: true,
+    xs: 4,
+    style: {
+      paddingBottom: "15%",
+      paddingTop: "15%"
+    }
+  }, _react.default.createElement(_Paper.default, {
+    className: classes.paper
+  }, _react.default.createElement("div", {
+    style: {
+      textAlign: "center"
+    }
+  }, _react.default.createElement("div", null, _react.default.createElement("h1", null, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("input", {
     onChange: function onChange(event) {
       return setChatName(event.target.value);
     }
@@ -63806,9 +63851,26 @@ function Join() {
     to: "/chat?name=".concat(chatName)
   }, _react.default.createElement("button", {
     type: "submit"
-  }, "Sign In"))));
+  }, "Sign In")))))), _react.default.createElement(_Grid.default, {
+    item: true,
+    xs: true
+  }))) // <div style={{textAlign: "center"}}>
+  //     <div>
+  //         <h1> Join The Conversation</h1>
+  //     </div>
+  //     <hr></hr>
+  //     <div>
+  //         <input onChange={event => setChatName(event.target.value)} />
+  //     </div>
+  //     <div>
+  //     <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
+  //   <button type="submit">Sign In</button>
+  // </Link>
+  //     </div>
+  // </div>
+  ;
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

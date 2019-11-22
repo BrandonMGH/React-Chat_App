@@ -69,7 +69,6 @@ export default function Join() {
                                         <TextField
                                             label="Name"
                                             id="margin-none"
-                                            defaultValue="Default Value"
                                             className={classes.textField}
                                             onChange={event => setChatName(event.target.value)}
                                         />

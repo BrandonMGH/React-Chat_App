@@ -65554,7 +65554,6 @@ function Join() {
   }, _react.default.createElement("div", null, _react.default.createElement(_TextField.default, {
     label: "Name",
     id: "margin-none",
-    defaultValue: "Default Value",
     className: classes.textField,
     onChange: function onChange(event) {
       return setChatName(event.target.value);

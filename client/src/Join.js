@@ -4,10 +4,11 @@ import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 
 const useStyles = makeStyles(theme => ({
-    root: {
+    body: {
         flexGrow: 1,
         backgroundColor: "black"
     },
@@ -20,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 
     },
     chatTitle: {
-        color:"black"
+        color: "black"
     },
     chatBox: {
         textAlign: "center",
@@ -38,6 +39,11 @@ const useStyles = makeStyles(theme => ({
         width: 200,
         textColor: 'white'
     },
+    root: {
+        '& > *': {
+            margin: theme.spacing(1),
+        },
+    },
 }));
 
 
@@ -45,7 +51,7 @@ export default function Join() {
     const [chatName, setChatName] = useState("")
     const classes = useStyles();
     return (
-        <div className={classes.root} >
+        <div className={classes.body} >
             <Grid container spacing={3}>
                 <Grid item xs>
                 </Grid>
@@ -72,7 +78,10 @@ export default function Join() {
                             </div>
                             <div>
                                 <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
-                                    <button type="submit">Sign In</button>
+                                    <div className={classes.root}>
+                                        <Button type="submit" variant="contained" onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>Default</Button>
+                                    </div>
+                                   
                                 </Link>
                             </div>
                         </div>
@@ -82,20 +91,5 @@ export default function Join() {
                 </Grid>
             </Grid>
         </div>
-
-        // <div style={{textAlign: "center"}}>
-        //     <div>
-        //         <h1> Join The Conversation</h1>
-        //     </div>
-        //     <hr></hr>
-        //     <div>
-        //         <input onChange={event => setChatName(event.target.value)} />
-        //     </div>
-        //     <div>
-        //     <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
-        //   <button type="submit">Sign In</button>
-        // </Link>
-        //     </div>
-        // </div>
     )
 }

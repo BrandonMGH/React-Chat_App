@@ -65495,13 +65495,13 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       backgroundColor: "black"
     },
     chatTitle: {
-      color: "black"
+      color: "white"
     },
     chatBox: {
       textAlign: "center",
-      border: "2px solid black",
-      backgroundColor: "white",
-      padding: "5%"
+      border: "2px solid white",
+      padding: "5%",
+      color: "white"
     },
     container: {
       display: 'flex',
@@ -65543,22 +65543,29 @@ function Join() {
       paddingBottom: "15%",
       paddingTop: "15%"
     }
-  }, _react.default.createElement(_Paper.default, {
-    className: classes.paper
   }, _react.default.createElement("div", {
     className: classes.chatBox
   }, _react.default.createElement("div", null, _react.default.createElement("h1", {
     className: classes.chatTitle
-  }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", null, _react.default.createElement("div", {
+  }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", {
     className: classes.container
-  }, _react.default.createElement("div", null, _react.default.createElement(_TextField.default, {
-    label: "Name",
-    id: "margin-none",
-    className: classes.textField,
+  }, _react.default.createElement(_Grid.default, {
+    container: true,
+    spacing: 3
+  }, _react.default.createElement(_Grid.default, {
+    item: true,
+    xs: 4
+  }), _react.default.createElement(_Grid.default, {
+    item: true,
+    xs: 4
+  }, _react.default.createElement("input", {
     onChange: function onChange(event) {
       return setChatName(event.target.value);
     }
-  })))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
+  })), _react.default.createElement(_Grid.default, {
+    item: true,
+    xs: 4
+  }))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
     onClick: function onClick(event) {
       return !chatName ? event.preventDefault() : null;
     },
@@ -65572,7 +65579,7 @@ function Join() {
       return !chatName ? event.preventDefault() : null;
     },
     to: "/chat?name=".concat(chatName)
-  }, "Default"))))))), _react.default.createElement(_Grid.default, {
+  }, "Default")))))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: true
   })));

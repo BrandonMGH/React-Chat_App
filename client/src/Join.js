@@ -7,6 +7,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
 
+
 const useStyles = makeStyles(theme => ({
     body: {
         flexGrow: 1,
@@ -21,13 +22,13 @@ const useStyles = makeStyles(theme => ({
 
     },
     chatTitle: {
-        color: "black"
+        color: "white"
     },
     chatBox: {
         textAlign: "center",
-        border: "2px solid black",
-        backgroundColor: "white",
-        padding: "5%"
+        border: "2px solid white",
+        padding: "5%",
+        color: "white"
     },
     container: {
         display: 'flex',
@@ -47,6 +48,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 
+
+
 export default function Join() {
     const [chatName, setChatName] = useState("")
     const classes = useStyles();
@@ -56,35 +59,28 @@ export default function Join() {
                 <Grid item xs>
                 </Grid>
                 <Grid item xs={4} style={{ paddingBottom: "15%", paddingTop: "15%" }}>
-
-                    <Paper className={classes.paper}>
-                        <div className={classes.chatBox}>
-                            <div>
-                                <h1 className={classes.chatTitle}> Join The Conversation</h1>
-                            </div>
-                            <hr></hr>
-                            <div>
-                                <div className={classes.container}>
-                                    <div>
-                                        <TextField
-                                            label="Name"
-                                            id="margin-none"
-                                            className={classes.textField}
-                                            onChange={event => setChatName(event.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
-                                    <div className={classes.root}>
-                                        <Button type="submit" variant="contained" onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>Default</Button>
-                                    </div>
-                                   
-                                </Link>
-                            </div>
+                    <div className={classes.chatBox}>
+                        <div>
+                            <h1 className={classes.chatTitle}> Join The Conversation</h1>
                         </div>
-                    </Paper>
+                        <hr></hr>
+                        <div className={classes.container}>
+                            <Grid container spacing={3}>
+                                <Grid item xs={4}></Grid>
+                                <Grid item xs={4}><input onChange={event => setChatName(event.target.value)} /></Grid>
+                                <Grid item xs={4}></Grid>
+                            </Grid>
+                        </div>
+                        <div>
+                            <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
+                                <div className={classes.root}>
+                                    <Button type="submit" variant="contained" onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>Default</Button>
+                                </div>
+
+                            </Link>
+                        </div>
+                    </div>
+
                 </Grid>
                 <Grid item xs>
                 </Grid>

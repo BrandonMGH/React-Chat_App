@@ -65504,8 +65504,9 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       color: "white"
     },
     container: {
-      display: 'flex',
-      flexWrap: 'wrap'
+      display: 'grid',
+      flexWrap: 'wrap',
+      paddingBottom: "10%"
     },
     textField: {
       marginLeft: theme.spacing(1),
@@ -65547,39 +65548,24 @@ function Join() {
     className: classes.chatBox
   }, _react.default.createElement("div", null, _react.default.createElement("h1", {
     className: classes.chatTitle
-  }, " Join The Conversation")), _react.default.createElement("hr", null), _react.default.createElement("div", {
+  }, " Welcome to React-Chat")), _react.default.createElement("hr", null), _react.default.createElement("div", {
     className: classes.container
-  }, _react.default.createElement(_Grid.default, {
-    container: true,
-    spacing: 3
-  }, _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 4
-  }), _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 4
-  }, _react.default.createElement("input", {
+  }, _react.default.createElement("label", null, _react.default.createElement("b", null, "Name")), _react.default.createElement("div", null, _react.default.createElement("input", {
+    style: {
+      backgroundColor: "black"
+    },
     onChange: function onChange(event) {
       return setChatName(event.target.value);
     }
-  })), _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 4
   }))), _react.default.createElement("div", null, _react.default.createElement(_reactRouterDom.Link, {
     onClick: function onClick(event) {
       return !chatName ? event.preventDefault() : null;
     },
     to: "/chat?name=".concat(chatName)
-  }, _react.default.createElement("div", {
-    className: classes.root
   }, _react.default.createElement(_Button.default, {
     type: "submit",
-    variant: "contained",
-    onClick: function onClick(event) {
-      return !chatName ? event.preventDefault() : null;
-    },
-    to: "/chat?name=".concat(chatName)
-  }, "Default")))))), _react.default.createElement(_Grid.default, {
+    variant: "contained"
+  }, " Join the Conversation"))))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: true
   })));
@@ -65655,7 +65641,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61933" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60798" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

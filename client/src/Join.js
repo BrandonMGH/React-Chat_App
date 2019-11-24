@@ -31,8 +31,9 @@ const useStyles = makeStyles(theme => ({
         color: "white"
     },
     container: {
-        display: 'flex',
+        display: 'grid',
         flexWrap: 'wrap',
+        paddingBottom: "10%"
     },
     textField: {
         marginLeft: theme.spacing(1),
@@ -61,22 +62,18 @@ export default function Join() {
                 <Grid item xs={4} style={{ paddingBottom: "15%", paddingTop: "15%" }}>
                     <div className={classes.chatBox}>
                         <div>
-                            <h1 className={classes.chatTitle}> Join The Conversation</h1>
+                            <h1 className={classes.chatTitle}> Welcome to React-Chat</h1>
                         </div>
                         <hr></hr>
                         <div className={classes.container}>
-                            <Grid container spacing={3}>
-                                <Grid item xs={4}></Grid>
-                                <Grid item xs={4}><input onChange={event => setChatName(event.target.value)} /></Grid>
-                                <Grid item xs={4}></Grid>
-                            </Grid>
+                            <label><b>Name</b></label>
+                            <div>
+                                <input style={{ backgroundColor: "black" }}onChange={event => setChatName(event.target.value)} />
+                            </div>
                         </div>
                         <div>
                             <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
-                                <div className={classes.root}>
-                                    <Button type="submit" variant="contained" onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>Default</Button>
-                                </div>
-
+                                    <Button type="submit" variant="contained" > Join the Conversation</Button>
                             </Link>
                         </div>
                     </div>

@@ -63826,11 +63826,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       paddingBottom: "10%",
       paddingTop: "10%"
     },
-    root: {
-      '& > *': {
-        margin: theme.spacing(1)
-      }
-    }
+    hover: {}
   };
 });
 
@@ -63840,7 +63836,28 @@ function Join() {
       chatName = _useState2[0],
       setChatName = _useState2[1];
 
+  var _useState3 = (0, _react.useState)("white"),
+      _useState4 = _slicedToArray(_useState3, 2),
+      backgroundColor = _useState4[0],
+      setBackgroundColor = _useState4[1];
+
+  var _useState5 = (0, _react.useState)("black"),
+      _useState6 = _slicedToArray(_useState5, 2),
+      color = _useState6[0],
+      setColor = _useState6[1];
+
   var classes = useStyles();
+
+  var colorOn = function colorOn() {
+    setColor("white");
+    setBackgroundColor("Grey");
+  };
+
+  var colorOff = function colorOff() {
+    setColor("black");
+    setBackgroundColor("white");
+  };
+
   return _react.default.createElement("div", {
     className: classes.body
   }, _react.default.createElement(_Grid.default, {
@@ -63867,12 +63884,17 @@ function Join() {
     }
   })), _react.default.createElement("hr", null), _react.default.createElement("div", {
     className: classes.container
-  }, _react.default.createElement("label", null, _react.default.createElement("b", null, "Enter Name")), _react.default.createElement("div", null, _react.default.createElement("input", {
+  }, _react.default.createElement("label", {
+    style: {
+      padding: "2%"
+    }
+  }, _react.default.createElement("b", null, "Enter Name")), _react.default.createElement("div", null, _react.default.createElement("input", {
     style: {
       backgroundColor: "black",
       color: "white",
       textAlign: "center",
-      width: "50%"
+      width: "50%",
+      padding: "2%"
     },
     onChange: function onChange(event) {
       return setChatName(event.target.value);
@@ -63886,10 +63908,12 @@ function Join() {
     },
     to: "/chat?name=".concat(chatName)
   }, _react.default.createElement("div", {
+    onMouseEnter: colorOn,
+    onMouseLeave: colorOff,
     style: {
-      backgroundColor: "white",
+      backgroundColor: backgroundColor,
       textAlign: "center",
-      color: "black",
+      color: color,
       marginRight: "20%",
       marginLeft: "20%"
     }

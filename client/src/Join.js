@@ -34,10 +34,8 @@ const useStyles = makeStyles(theme => ({
         paddingBottom: "10%",
         paddingTop: "10%"
     },
-    root: {
-        '& > *': {
-            margin: theme.spacing(1),
-        },
+    hover: {
+        
     },
 }));
 
@@ -46,7 +44,19 @@ const useStyles = makeStyles(theme => ({
 
 export default function Join() {
     const [chatName, setChatName] = useState("")
+    const [backgroundColor, setBackgroundColor] = useState("white")
+    const [color, setColor] = useState("black")
     const classes = useStyles();
+
+    let colorOn = function () {
+        setColor("white")
+        setBackgroundColor("Grey")
+    }
+
+    let colorOff = function () {
+        setColor("black")
+        setBackgroundColor("white")
+    }
     return (
         <div className={classes.body} >
             <Grid container spacing={3}>
@@ -62,15 +72,15 @@ export default function Join() {
                         </div>
                         <hr />
                         <div className={classes.container}>
-                            <label><b>Enter Name</b></label>
+                            <label style={{padding: "2%"}}><b>Enter Name</b></label>
                             <div>
-                                <input style={{ backgroundColor: "black", color: "white", textAlign: "center", width: "50%"}}onChange={event => setChatName(event.target.value)} />
+                                <input style={{ backgroundColor: "black", color: "white", textAlign: "center", width: "50%", padding: "2%"}}onChange={event => setChatName(event.target.value)} />
                             </div>
                         </div>
                         <div>
                             <Link style={{textDecoration: "none"}} onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
-                                    <div style={{ backgroundColor: "white", textAlign: "center", color: "black", marginRight: "20%", marginLeft: "20%"}}>
-                                     <p style={{padding: "5%"}}>JOIN THE CHAT</p>
+                                    <div onMouseEnter={colorOn} onMouseLeave={colorOff} style={{ backgroundColor:backgroundColor , textAlign: "center", color: color, marginRight: "20%", marginLeft: "20%"}}>
+                                     <p style={{padding: "5%" }}>JOIN THE CHAT</p>
                                     </div>
                             </Link>
     

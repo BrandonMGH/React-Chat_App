@@ -6,7 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import { withTheme } from "@material-ui/styles";
-import friendBackground from './friendBackground.png'
+import friendBackground from './Images/friendBackground.png'
 
 // ** CSS STYLES ** // 
 const useStyles = makeStyles(theme => ({

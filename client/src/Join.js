@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from "react-router-dom";
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import ReactLogo from './Images/ReactLogo.png'
+
 
 
 
@@ -32,14 +31,8 @@ const useStyles = makeStyles(theme => ({
     },
     container: {
         display: 'grid',
-        flexWrap: 'wrap',
-        paddingBottom: "10%"
-    },
-    textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
-        width: 200,
-        textColor: 'white'
+        paddingBottom: "10%",
+        paddingTop: "10%"
     },
     root: {
         '& > *': {
@@ -64,17 +57,23 @@ export default function Join() {
                         <div>
                             <h1 className={classes.chatTitle}> Welcome to React-Chat</h1>
                         </div>
-                        <hr></hr>
+                        <div>
+                            <img src={ReactLogo} style={{width: "75%"}} />
+                        </div>
+                        <hr />
                         <div className={classes.container}>
-                            <label><b>Name</b></label>
+                            <label><b>Enter Name</b></label>
                             <div>
-                                <input style={{ backgroundColor: "black" }}onChange={event => setChatName(event.target.value)} />
+                                <input style={{ backgroundColor: "black", color: "white", textAlign: "center", width: "50%"}}onChange={event => setChatName(event.target.value)} />
                             </div>
                         </div>
                         <div>
-                            <Link onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
-                                    <Button type="submit" variant="contained" > Join the Conversation</Button>
+                            <Link style={{textDecoration: "none"}} onClick={event => (!chatName) ? event.preventDefault() : null} to={`/chat?name=${chatName}`}>
+                                    <div style={{ backgroundColor: "white", textAlign: "center", color: "black", marginRight: "20%", marginLeft: "20%"}}>
+                                     <p style={{padding: "5%"}}>JOIN THE CHAT</p>
+                                    </div>
                             </Link>
+    
                         </div>
                     </div>
 

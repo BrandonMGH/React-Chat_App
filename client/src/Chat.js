@@ -23,6 +23,7 @@ const useStyles = makeStyles(theme => ({
         height: '70vh',
         overflow: 'auto',
         flex: 'auto',
+        border: 'solid 2px grey'
     },
     container: {
         display: 'flex',
@@ -82,8 +83,7 @@ export default function Chat() {
                 <Grid item xs={3}> </Grid>
                 <Grid item xs={6}>
                     <div style={{ textAlign: "center", color: "white"}}>
-                    <h1>Socket React Chat</h1>
-                    <p> a chat app created with the use of React, Express and Socket.Io</p>
+                    <p style={{color: "white", backgroundColor: "grey", padding: "2%", borderRad}}>REACT CHAT</p>
                     <Paper className={classes.paper}>
                         {chatTextContainer.map((text, index) =>
                             <p key={index} style={{ textAlign: "left" }}>{text}</p>

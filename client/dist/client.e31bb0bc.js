@@ -60776,7 +60776,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       color: theme.palette.text.secondary,
       height: '70vh',
       overflow: 'auto',
-      flex: 'auto'
+      flex: 'auto',
+      border: 'solid 2px grey'
     },
     container: {
       display: 'flex',
@@ -60853,7 +60854,14 @@ function Chat() {
       textAlign: "center",
       color: "white"
     }
-  }, _react.default.createElement("h1", null, "Socket React Chat"), _react.default.createElement("p", null, " a chat app created with the use of React, Express and Socket.Io"), _react.default.createElement(_Paper.default, {
+  }, _react.default.createElement("p", {
+    style: {
+      color: "white",
+      backgroundColor: "grey",
+      padding: "2%",
+      borderRad: borderRad
+    }
+  }, "REACT CHAT"), _react.default.createElement(_Paper.default, {
     className: classes.paper
   }, chatTextContainer.map(function (text, index) {
     return _react.default.createElement("p", {

@@ -60777,7 +60777,7 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       height: '70vh',
       overflow: 'auto',
       flex: 'auto',
-      border: 'solid 2px grey'
+      border: 'solid 5px grey'
     },
     container: {
       display: 'flex',
@@ -60849,19 +60849,20 @@ function Chat() {
   }, " "), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 6
-  }, _react.default.createElement("div", {
-    style: {
-      textAlign: "center",
-      color: "white"
-    }
   }, _react.default.createElement("p", {
     style: {
       color: "white",
       backgroundColor: "grey",
       padding: "2%",
-      borderRad: borderRad
+      borderRadius: "2%",
+      marginBottom: "-1%"
     }
-  }, "REACT CHAT"), _react.default.createElement(_Paper.default, {
+  }, "REACT CHAT"), _react.default.createElement("div", {
+    style: {
+      textAlign: "center",
+      color: "white"
+    }
+  }, _react.default.createElement(_Paper.default, {
     className: classes.paper
   }, chatTextContainer.map(function (text, index) {
     return _react.default.createElement("p", {
@@ -60903,7 +60904,8 @@ function Chat() {
       shrink: true
     }
   }, "style", {
-    backgroundColor: "white"
+    backgroundColor: "white",
+    border: "solid 5px grey"
   }))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: 3
@@ -64005,7 +64007,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50211" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49798" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

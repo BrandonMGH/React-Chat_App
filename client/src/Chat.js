@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         height: '70vh',
         overflow: 'auto',
         flex: 'auto',
-        border: 'solid 2px grey'
+        border: 'solid 5px grey'
     },
     container: {
         display: 'flex',
@@ -82,14 +82,14 @@ export default function Chat() {
             <Grid container spacing={3}>
                 <Grid item xs={3}> </Grid>
                 <Grid item xs={6}>
-                    <div style={{ textAlign: "center", color: "white"}}>
-                    <p style={{color: "white", backgroundColor: "grey", padding: "2%", borderRad}}>REACT CHAT</p>
-                    <Paper className={classes.paper}>
-                        {chatTextContainer.map((text, index) =>
-                            <p key={index} style={{ textAlign: "left" }}>{text}</p>
-                        )}
-    
-                    </Paper>
+                    <p style={{ color: "white", backgroundColor: "grey", padding: "2%", borderRadius: "2%", marginBottom: "-1%" }}>REACT CHAT</p>
+                    <div style={{ textAlign: "center", color: "white" }}>
+                        <Paper className={classes.paper}>
+                            {chatTextContainer.map((text, index) =>
+                                <p key={index} style={{ textAlign: "left" }}>{text}</p>
+                            )}
+
+                        </Paper>
                     </div>
                 </Grid>
                 <Grid item xs={3}> </Grid>
@@ -98,7 +98,7 @@ export default function Chat() {
                 <Grid item xs={3}></Grid>
                 <Grid item xs={6}>
                     <TextField
-                    className={classes.container}
+                        className={classes.container}
                         id="standard-full-width"
                         // label="ChatBox"
                         style={{ margin: 8 }}
@@ -111,7 +111,7 @@ export default function Chat() {
                         InputLabelProps={{
                             shrink: true,
                         }}
-                        style={{backgroundColor: "white"}}
+                        style={{ backgroundColor: "white", border: "solid 5px grey" }}
                     />
                 </Grid>
                 <Grid item xs={3}></Grid>

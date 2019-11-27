@@ -12,14 +12,6 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         backgroundColor: "black"
     },
-    paper: {
-        padding: theme.spacing(2),
-        textAlign: 'center',
-        color: theme.palette.text.secondary,
-        height: "30vh",
-        backgroundColor: "black",
-
-    },
     chatTitle: {
         color: "white"
     },

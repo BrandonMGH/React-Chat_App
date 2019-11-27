@@ -63763,13 +63763,6 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       flexGrow: 1,
       backgroundColor: "black"
     },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-      height: "30vh",
-      backgroundColor: "black"
-    },
     chatTitle: {
       color: "white"
     },

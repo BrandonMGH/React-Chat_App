@@ -5,29 +5,31 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import friendBackground from './Images/friendBackground.png'
+import friendsBackground6 from './Images/friendsBackground6.png'
 
 
 // ** CSS STYLES ** // 
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
-        backgroundImage: `url(${friendBackground})`,
+        backgroundImage: `url(${friendsBackground6})`,
         paddingTop: '50px',
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+
     },
     paper: {
         padding: theme.spacing(2),
-        textAlign: 'center',
+        textAlign: 'left',
         color: theme.palette.text.secondary,
         height: '70vh',
         overflow: 'auto',
         flex: 'auto',
-        border: 'solid 5px grey'
+        border: 'solid 5px #264abf'
     },
     container: {
         display: 'flex',
         flexWrap: 'wrap',
+        margin: '2%'
     },
 }));
 
@@ -80,10 +82,10 @@ export default function Chat() {
     return (
         <div className={classes.root} >
             <Grid container spacing={3}>
-                <Grid item xs={3}> </Grid>
-                <Grid item xs={6}>
-                    <p style={{ color: "white", backgroundColor: "grey", padding: "2%", borderRadius: "2%", marginBottom: "-1%"}}>REACT CHAT</p>
-                    <div style={{ textAlign: "center", color: "white" }}>
+                <Grid item xs={8}> </Grid>
+                <Grid item xs={4}>
+                    <p style={{ color: "white", backgroundColor: "#264abf", padding: "2%", borderRadius: "2%", marginBottom: "-2%", marginRight: "2%", marginLeft: "2%" }}>REACT CHAT</p>
+                    <div style={{ textAlign: "center", color: "white", margin: "2%" }}>
                         <Paper className={classes.paper}>
                             {chatTextContainer.map((text, index) =>
                                 <p key={index} style={{ textAlign: "left" }}>{text}</p>
@@ -92,17 +94,16 @@ export default function Chat() {
                         </Paper>
                     </div>
                 </Grid>
-                <Grid item xs={3}> </Grid>
             </Grid>
             <Grid container spacing={3}>
-                <Grid item xs={3}></Grid>
-                <Grid item xs={6}>
-                    <TextField
+                <Grid item xs={8}></Grid>
+              
+                <Grid item xs={4}>
+                <TextField
                         className={classes.container}
                         id="standard-full-width"
-                        style={{ margin: 8 }}
+                        style={{ margin: 8}}
                         placeholder="Press enter to send text"
-                        fullWidth
                         margin="normal"
                         value={chatText}
                         onChange={event => setChatText(event.target.value)}
@@ -110,10 +111,9 @@ export default function Chat() {
                         InputLabelProps={{
                             shrink: true,
                         }}
-                        style={{ backgroundColor: "white", border: "solid 5px grey" }}
+                        style={{ backgroundColor: "white", border: "solid 5px #264abf" }}
                     />
                 </Grid>
-                <Grid item xs={3}></Grid>
             </Grid>
         </div>
     )

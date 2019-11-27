@@ -60663,8 +60663,8 @@ Object.defineProperty(exports, "default", {
 var _TextField = _interopRequireDefault(require("./TextField"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-},{"./TextField":"node_modules/@material-ui/core/esm/TextField/TextField.js"}],"src/Images/friendBackground.png":[function(require,module,exports) {
-module.exports = "/friendBackground.5f58a753.png";
+},{"./TextField":"node_modules/@material-ui/core/esm/TextField/TextField.js"}],"src/Images/friendsBackground6.png":[function(require,module,exports) {
+module.exports = "/friendsBackground6.04a4bd5e.png";
 },{}],"src/Chat.js":[function(require,module,exports) {
 "use strict";
 
@@ -60687,7 +60687,7 @@ var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
 
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
 
-var _friendBackground = _interopRequireDefault(require("./Images/friendBackground.png"));
+var _friendsBackground = _interopRequireDefault(require("./Images/friendsBackground6.png"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -60718,22 +60718,23 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
   return {
     root: {
       flexGrow: 1,
-      backgroundImage: "url(".concat(_friendBackground.default, ")"),
+      backgroundImage: "url(".concat(_friendsBackground.default, ")"),
       paddingTop: '50px',
       backgroundSize: 'cover'
     },
     paper: {
       padding: theme.spacing(2),
-      textAlign: 'center',
+      textAlign: 'left',
       color: theme.palette.text.secondary,
       height: '70vh',
       overflow: 'auto',
       flex: 'auto',
-      border: 'solid 5px grey'
+      border: 'solid 5px #264abf'
     },
     container: {
       display: 'flex',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      margin: '2%'
     }
   };
 });
@@ -60797,22 +60798,25 @@ function Chat() {
     spacing: 3
   }, _react.default.createElement(_Grid.default, {
     item: true,
-    xs: 3
+    xs: 8
   }, " "), _react.default.createElement(_Grid.default, {
     item: true,
-    xs: 6
+    xs: 4
   }, _react.default.createElement("p", {
     style: {
       color: "white",
-      backgroundColor: "grey",
+      backgroundColor: "#264abf",
       padding: "2%",
       borderRadius: "2%",
-      marginBottom: "-1%"
+      marginBottom: "-2%",
+      marginRight: "2%",
+      marginLeft: "2%"
     }
   }, "REACT CHAT"), _react.default.createElement("div", {
     style: {
       textAlign: "center",
-      color: "white"
+      color: "white",
+      margin: "2%"
     }
   }, _react.default.createElement(_Paper.default, {
     className: classes.paper
@@ -60823,18 +60827,15 @@ function Chat() {
         textAlign: "left"
       }
     }, text);
-  })))), _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 3
-  }, " ")), _react.default.createElement(_Grid.default, {
+  }))))), _react.default.createElement(_Grid.default, {
     container: true,
     spacing: 3
   }, _react.default.createElement(_Grid.default, {
     item: true,
-    xs: 3
+    xs: 8
   }), _react.default.createElement(_Grid.default, {
     item: true,
-    xs: 6
+    xs: 4
   }, _react.default.createElement(_TextField.default, _defineProperty({
     className: classes.container,
     id: "standard-full-width",
@@ -60842,7 +60843,6 @@ function Chat() {
       margin: 8
     },
     placeholder: "Press enter to send text",
-    fullWidth: true,
     margin: "normal",
     value: chatText,
     onChange: function onChange(event) {
@@ -60856,13 +60856,10 @@ function Chat() {
     }
   }, "style", {
     backgroundColor: "white",
-    border: "solid 5px grey"
-  }))), _react.default.createElement(_Grid.default, {
-    item: true,
-    xs: 3
-  })));
+    border: "solid 5px #264abf"
+  })))));
 }
-},{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/TextField":"node_modules/@material-ui/core/esm/TextField/index.js","./Images/friendBackground.png":"src/Images/friendBackground.png"}],"node_modules/resolve-pathname/esm/resolve-pathname.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","query-string":"node_modules/query-string/index.js","socket.io-client":"node_modules/socket.io-client/lib/index.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Paper":"node_modules/@material-ui/core/esm/Paper/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","@material-ui/core/TextField":"node_modules/@material-ui/core/esm/TextField/index.js","./Images/friendsBackground6.png":"src/Images/friendsBackground6.png"}],"node_modules/resolve-pathname/esm/resolve-pathname.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

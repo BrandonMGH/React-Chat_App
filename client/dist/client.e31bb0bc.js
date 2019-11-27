@@ -63796,7 +63796,7 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.css":[function(require,module,exports) {
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"font.css":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -63821,7 +63821,7 @@ var _ReactLogo = _interopRequireDefault(require("./Images/ReactLogo.png"));
 
 var _friendsBackground = _interopRequireDefault(require("./Images/friendsBackground2.png"));
 
-require("../index.css");
+require("../font.css");
 
 require("./fonts/FiraSans-Regular.ttf");
 
@@ -63844,11 +63844,11 @@ var useStyles = (0, _styles.makeStyles)(function () {
     body: {
       flexGrow: 1,
       backgroundImage: "url(".concat(_friendsBackground.default, ")"),
-      backgroundSize: 'cover'
+      backgroundSize: 'cover',
+      fontFamily: "FiraSans"
     },
     chatTitle: {
-      color: "white",
-      fontFamily: "FiraSans"
+      color: "white"
     },
     chatBox: {
       textAlign: "center",
@@ -63960,85 +63960,7 @@ function Join() {
     xs: true
   })));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","./Images/ReactLogo.png":"src/Images/ReactLogo.png","./Images/friendsBackground2.png":"src/Images/friendsBackground2.png","../index.css":"index.css","./fonts/FiraSans-Regular.ttf":"src/fonts/FiraSans-Regular.ttf"}],"node_modules/react-google-font-loader/build/index.js":[function(require,module,exports) {
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _react = require('react');
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-var createLink = function createLink(fonts, subsets, display) {
-    var families = fonts.reduce(function (acc, font) {
-        var family = font.font.replace(/ +/g, '+');
-        var weights = (font.weights || []).join(',');
-
-        return [].concat(_toConsumableArray(acc), [family + (weights && ':' + weights)]);
-    }, []).join('|');
-
-    var link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css?family=' + families;
-
-    if (subsets && Array.isArray(subsets) && subsets.length > 0) {
-        link.href += '&subset=' + subsets.join(',');
-    }
-
-    if (display) {
-        link.href += '&display=' + display;
-    }
-
-    return link;
-};
-
-var GoogleFontLoader = function GoogleFontLoader(_ref) {
-    var fonts = _ref.fonts,
-        subsets = _ref.subsets,
-        _ref$display = _ref.display,
-        display = _ref$display === undefined ? null : _ref$display;
-
-    var _useState = (0, _react.useState)(createLink(fonts, subsets, display)),
-        _useState2 = _slicedToArray(_useState, 2),
-        link = _useState2[0],
-        setLink = _useState2[1];
-
-    (0, _react.useEffect)(function () {
-        document.head.appendChild(link);
-
-        return function () {
-            return document.head.removeChild(link);
-        };
-    }, [link]);
-
-    (0, _react.useEffect)(function () {
-        setLink(createLink(fonts, subsets, display));
-    }, [fonts, subsets, display]);
-
-    return null;
-};
-
-GoogleFontLoader.propTypes = {
-    fonts: _propTypes2.default.arrayOf(_propTypes2.default.shape({
-        font: _propTypes2.default.string.isRequired,
-        weights: _propTypes2.default.arrayOf(_propTypes2.default.oneOfType([_propTypes2.default.string, _propTypes2.default.number]))
-    })).isRequired,
-    subsets: _propTypes2.default.arrayOf(_propTypes2.default.string),
-    display: _propTypes2.default.string
-};
-
-exports.default = GoogleFontLoader;
-},{"react":"node_modules/react/index.js","prop-types":"node_modules/prop-types/index.js"}],"src/App.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","./Images/ReactLogo.png":"src/Images/ReactLogo.png","./Images/friendsBackground2.png":"src/Images/friendsBackground2.png","../font.css":"font.css","./fonts/FiraSans-Regular.ttf":"src/fonts/FiraSans-Regular.ttf"}],"src/App.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -64054,22 +63976,9 @@ var _Join = _interopRequireDefault(require("./Join.js"));
 
 var _reactRouterDom = require("react-router-dom");
 
-var _reactGoogleFontLoader = _interopRequireDefault(require("react-google-font-loader"));
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = function App() {
-  _react.default.createElement(_reactGoogleFontLoader.default, {
-    fonts: [{
-      font: 'Roboto',
-      weights: [400, '400i']
-    }, {
-      font: 'Roboto Mono',
-      weights: [400, 700]
-    }],
-    subsets: ['cyrillic-ext', 'greek']
-  });
-
   return _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactRouterDom.Route, {
     path: "/",
     exact: true,
@@ -64082,7 +63991,7 @@ var App = function App() {
 
 var _default = App;
 exports.default = _default;
-},{"react":"node_modules/react/index.js","./Chat.js":"src/Chat.js","./Join.js":"src/Join.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","react-google-font-loader":"node_modules/react-google-font-loader/build/index.js"}],"index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Chat.js":"src/Chat.js","./Join.js":"src/Join.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js"}],"index.js":[function(require,module,exports) {
 "use strict";
 
 var _react = _interopRequireDefault(require("react"));

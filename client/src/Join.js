@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ReactLogo from './Images/ReactLogo.png'
 import friendsBackground2 from './Images/friendsBackground2.png'
-import '../index.css'
+import '../font.css'
 import './fonts/FiraSans-Regular.ttf'
 
 
@@ -15,10 +15,10 @@ const useStyles = makeStyles(() => ({
         flexGrow: 1,
         backgroundImage: `url(${friendsBackground2})`,
         backgroundSize: 'cover',
+        fontFamily: "FiraSans"
     },
     chatTitle: {
         color: "white",
-        fontFamily: "FiraSans"
     },
     chatBox: {
         textAlign: "center",

@@ -63725,6 +63725,8 @@ if ("development" !== "production") {
 }
 },{"react-router":"node_modules/react-router/esm/react-router.js","@babel/runtime/helpers/esm/inheritsLoose":"node_modules/@babel/runtime/helpers/esm/inheritsLoose.js","react":"node_modules/react/index.js","history":"node_modules/history/esm/history.js","prop-types":"node_modules/prop-types/index.js","tiny-warning":"node_modules/tiny-warning/dist/tiny-warning.esm.js","@babel/runtime/helpers/esm/extends":"node_modules/@babel/runtime/helpers/esm/extends.js","@babel/runtime/helpers/esm/objectWithoutPropertiesLoose":"node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js","tiny-invariant":"node_modules/tiny-invariant/dist/tiny-invariant.esm.js"}],"src/Images/ReactLogo.png":[function(require,module,exports) {
 module.exports = "/ReactLogo.4d52d85c.png";
+},{}],"src/Images/friendsBackground2.png":[function(require,module,exports) {
+module.exports = "/friendsBackground2.20669cc8.png";
 },{}],"src/Join.js":[function(require,module,exports) {
 "use strict";
 
@@ -63743,6 +63745,8 @@ var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
 
 var _ReactLogo = _interopRequireDefault(require("./Images/ReactLogo.png"));
 
+var _friendsBackground = _interopRequireDefault(require("./Images/friendsBackground2.png"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -63757,11 +63761,12 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
-var useStyles = (0, _styles.makeStyles)(function (theme) {
+var useStyles = (0, _styles.makeStyles)(function () {
   return {
     body: {
       flexGrow: 1,
-      backgroundColor: "black"
+      backgroundImage: "url(".concat(_friendsBackground.default, ")"),
+      backgroundSize: 'cover'
     },
     chatTitle: {
       color: "white"
@@ -63770,7 +63775,8 @@ var useStyles = (0, _styles.makeStyles)(function (theme) {
       textAlign: "center",
       border: "2px solid white",
       padding: "5%",
-      color: "white"
+      color: "white",
+      backgroundColor: "#264abf"
     },
     container: {
       display: 'grid',
@@ -63792,7 +63798,7 @@ function Join() {
       backgroundColor = _useState4[0],
       setBackgroundColor = _useState4[1];
 
-  var _useState5 = (0, _react.useState)("black"),
+  var _useState5 = (0, _react.useState)("#264abf"),
       _useState6 = _slicedToArray(_useState5, 2),
       color = _useState6[0],
       setColor = _useState6[1];
@@ -63801,11 +63807,11 @@ function Join() {
 
   var colorOn = function colorOn() {
     setColor("white");
-    setBackgroundColor("Grey");
+    setBackgroundColor("#264abf");
   };
 
   var colorOff = function colorOff() {
-    setColor("black");
+    setColor("#264abf");
     setBackgroundColor("white");
   };
 
@@ -63841,8 +63847,8 @@ function Join() {
     }
   }, _react.default.createElement("b", null, "Enter Name")), _react.default.createElement("div", null, _react.default.createElement("input", {
     style: {
-      backgroundColor: "black",
-      color: "white",
+      backgroundColor: "white",
+      color: "black",
       textAlign: "center",
       width: "50%",
       padding: "2%"
@@ -63863,21 +63869,19 @@ function Join() {
     onMouseLeave: colorOff,
     style: {
       backgroundColor: backgroundColor,
-      textAlign: "center",
       color: color,
+      border: "white 2px solid",
+      textAlign: "center",
       marginRight: "20%",
-      marginLeft: "20%"
+      marginLeft: "20%",
+      marginBottom: "10%"
     }
-  }, _react.default.createElement("p", {
-    style: {
-      padding: "5%"
-    }
-  }, "JOIN THE CHAT")))))), _react.default.createElement(_Grid.default, {
+  }, _react.default.createElement("p", null, "JOIN THE CHAT")))))), _react.default.createElement(_Grid.default, {
     item: true,
     xs: true
   })));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","./Images/ReactLogo.png":"src/Images/ReactLogo.png"}],"node_modules/react-google-font-loader/build/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","./Images/ReactLogo.png":"src/Images/ReactLogo.png","./Images/friendsBackground2.png":"src/Images/friendsBackground2.png"}],"node_modules/react-google-font-loader/build/index.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -64039,7 +64043,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58205" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53927" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

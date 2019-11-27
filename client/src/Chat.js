@@ -9,12 +9,16 @@ import friendsBackground6 from './Images/friendsBackground6.png'
 
 
 // ** CSS STYLES ** // 
+import '../font.css'
+import './fonts/FiraSans-Regular.ttf'
+
 const useStyles = makeStyles(theme => ({
-    root: {
+    body: {
         flexGrow: 1,
         backgroundImage: `url(${friendsBackground6})`,
         paddingTop: '50px',
         backgroundSize: 'cover',
+        fontFamily: 'FiraSans'
 
     },
     paper: {
@@ -33,6 +37,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
+//** REACT COMPONENT  **//
 
 export default function Chat() {
     const [chatName, setChatName] = useState("")
@@ -80,7 +85,7 @@ export default function Chat() {
 
     }, [chatTextContainer])
     return (
-        <div className={classes.root} >
+        <div className={classes.body} >
             <Grid container spacing={3}>
                 <Grid item xs={8}> </Grid>
                 <Grid item xs={4}>

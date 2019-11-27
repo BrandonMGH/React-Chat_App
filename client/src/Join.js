@@ -4,11 +4,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ReactLogo from './Images/ReactLogo.png'
 import friendsBackground2 from './Images/friendsBackground2.png'
+
+// ** CSS STYLES ** // 
 import '../font.css'
 import './fonts/FiraSans-Regular.ttf'
-
-
-
 
 const useStyles = makeStyles(() => ({
     body: {
@@ -37,10 +36,10 @@ const useStyles = makeStyles(() => ({
     },
 }));
 
-
-
+//** REACT COMPONENT  **//
 
 export default function Join() {
+
     const [chatName, setChatName] = useState("")
     const [backgroundColor, setBackgroundColor] = useState("white")
     const [color, setColor] = useState("#264abf")

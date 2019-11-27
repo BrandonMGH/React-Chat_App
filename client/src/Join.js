@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import ReactLogo from './Images/ReactLogo.png'
 import friendsBackground2 from './Images/friendsBackground2.png'
+import '../index.css'
+import './fonts/FiraSans-Regular.ttf'
 
 
 
@@ -15,14 +17,15 @@ const useStyles = makeStyles(() => ({
         backgroundSize: 'cover',
     },
     chatTitle: {
-        color: "white"
+        color: "white",
+        fontFamily: "FiraSans"
     },
     chatBox: {
         textAlign: "center",
         border: "2px solid white",
         padding: "5%",
         color: "white",
-        backgroundColor: "#264abf"
+        backgroundColor: "#264abf",
     },
     container: {
         display: 'grid',

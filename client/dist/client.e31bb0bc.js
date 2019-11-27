@@ -63727,7 +63727,81 @@ if ("development" !== "production") {
 module.exports = "/ReactLogo.4d52d85c.png";
 },{}],"src/Images/friendsBackground2.png":[function(require,module,exports) {
 module.exports = "/friendsBackground2.20669cc8.png";
-},{}],"src/Join.js":[function(require,module,exports) {
+},{}],"src/fonts/FiraSans-Regular.ttf":[function(require,module,exports) {
+module.exports = "/FiraSans-Regular.02678b26.ttf";
+},{}],"node_modules/parcel-bundler/src/builtins/bundle-url.js":[function(require,module,exports) {
+var bundleURL = null;
+
+function getBundleURLCached() {
+  if (!bundleURL) {
+    bundleURL = getBundleURL();
+  }
+
+  return bundleURL;
+}
+
+function getBundleURL() {
+  // Attempt to find the URL of the current script and use that as the base URL
+  try {
+    throw new Error();
+  } catch (err) {
+    var matches = ('' + err.stack).match(/(https?|file|ftp|chrome-extension|moz-extension):\/\/[^)\n]+/g);
+
+    if (matches) {
+      return getBaseURL(matches[0]);
+    }
+  }
+
+  return '/';
+}
+
+function getBaseURL(url) {
+  return ('' + url).replace(/^((?:https?|file|ftp|chrome-extension|moz-extension):\/\/.+)\/[^/]+$/, '$1') + '/';
+}
+
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+},{}],"node_modules/parcel-bundler/src/builtins/css-loader.js":[function(require,module,exports) {
+var bundle = require('./bundle-url');
+
+function updateLink(link) {
+  var newLink = link.cloneNode();
+
+  newLink.onload = function () {
+    link.remove();
+  };
+
+  newLink.href = link.href.split('?')[0] + '?' + Date.now();
+  link.parentNode.insertBefore(newLink, link.nextSibling);
+}
+
+var cssTimeout = null;
+
+function reloadCSS() {
+  if (cssTimeout) {
+    return;
+  }
+
+  cssTimeout = setTimeout(function () {
+    var links = document.querySelectorAll('link[rel="stylesheet"]');
+
+    for (var i = 0; i < links.length; i++) {
+      if (bundle.getBaseURL(links[i].href) === bundle.getBundleURL()) {
+        updateLink(links[i]);
+      }
+    }
+
+    cssTimeout = null;
+  }, 50);
+}
+
+module.exports = reloadCSS;
+},{"./bundle-url":"node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"index.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"./src\\fonts\\FiraSans-Regular.ttf":[["FiraSans-Regular.02678b26.ttf","src/fonts/FiraSans-Regular.ttf"],"src/fonts/FiraSans-Regular.ttf"],"_css_loader":"node_modules/parcel-bundler/src/builtins/css-loader.js"}],"src/Join.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -63746,6 +63820,10 @@ var _Grid = _interopRequireDefault(require("@material-ui/core/Grid"));
 var _ReactLogo = _interopRequireDefault(require("./Images/ReactLogo.png"));
 
 var _friendsBackground = _interopRequireDefault(require("./Images/friendsBackground2.png"));
+
+require("../index.css");
+
+require("./fonts/FiraSans-Regular.ttf");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -63769,7 +63847,8 @@ var useStyles = (0, _styles.makeStyles)(function () {
       backgroundSize: 'cover'
     },
     chatTitle: {
-      color: "white"
+      color: "white",
+      fontFamily: "FiraSans"
     },
     chatBox: {
       textAlign: "center",
@@ -63881,7 +63960,7 @@ function Join() {
     xs: true
   })));
 }
-},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","./Images/ReactLogo.png":"src/Images/ReactLogo.png","./Images/friendsBackground2.png":"src/Images/friendsBackground2.png"}],"node_modules/react-google-font-loader/build/index.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-router-dom":"node_modules/react-router-dom/esm/react-router-dom.js","@material-ui/core/styles":"node_modules/@material-ui/core/esm/styles/index.js","@material-ui/core/Grid":"node_modules/@material-ui/core/esm/Grid/index.js","./Images/ReactLogo.png":"src/Images/ReactLogo.png","./Images/friendsBackground2.png":"src/Images/friendsBackground2.png","../index.css":"index.css","./fonts/FiraSans-Regular.ttf":"src/fonts/FiraSans-Regular.ttf"}],"node_modules/react-google-font-loader/build/index.js":[function(require,module,exports) {
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {

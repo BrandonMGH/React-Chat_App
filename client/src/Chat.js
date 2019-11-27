@@ -5,8 +5,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
-import { withTheme } from "@material-ui/styles";
 import friendBackground from './Images/friendBackground.png'
+
 
 // ** CSS STYLES ** // 
 const useStyles = makeStyles(theme => ({
@@ -82,7 +82,7 @@ export default function Chat() {
             <Grid container spacing={3}>
                 <Grid item xs={3}> </Grid>
                 <Grid item xs={6}>
-                    <p style={{ color: "white", backgroundColor: "grey", padding: "2%", borderRadius: "2%", marginBottom: "-1%" }}>REACT CHAT</p>
+                    <p style={{ color: "white", backgroundColor: "grey", padding: "2%", borderRadius: "2%", marginBottom: "-1%"}}>REACT CHAT</p>
                     <div style={{ textAlign: "center", color: "white" }}>
                         <Paper className={classes.paper}>
                             {chatTextContainer.map((text, index) =>
@@ -100,7 +100,6 @@ export default function Chat() {
                     <TextField
                         className={classes.container}
                         id="standard-full-width"
-                        // label="ChatBox"
                         style={{ margin: 8 }}
                         placeholder="Press enter to send text"
                         fullWidth

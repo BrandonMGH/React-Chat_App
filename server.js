@@ -29,6 +29,7 @@ io.on('connection', function(socket){
       io.emit('chat-name-client', name)
     });
     socket.on('chat-message-server', function(chatText) { 
+      console.log(users)
       getUser(users, () =>{
         for(let i=0; i < users.length; i++){
           for(let j =0; j < IDs.length; j ++){

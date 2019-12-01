@@ -1,6 +1,6 @@
 # REACT-CHAT
 
-![React-Logo](./client/src/Images/ReactGitHubLogo.png)
+![React-Logo](./client/src/Images/ReactLogo.png)
 
 ### APP DESCRIPTION:
 

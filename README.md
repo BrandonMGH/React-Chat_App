@@ -1,5 +1,7 @@
 # REACT-CHAT
 
+![React-Logo](./client/src/Images/ReactLogo.png)
+
 ### APP DESCRIPTION:
 
 A web app that utilizes web sockets via Socket.io to create a basic chatroom application that utilizes React.js for the client facing interface and Node/Express on the server side, allowing individual users of the application to chat with each other while using separate browser instances. 

@@ -6,17 +6,17 @@ A web app that utilizes web sockets via Socket.io to create a basic chatroom app
 
 ### TECHONOLIES USED IN THIS APP
 
-** Client-Side
-⋅⋅* React
-⋅⋅* Material UI
-⋅⋅* Parcel
-⋅⋅* Babel
+#### Client-Side
+- React
+- Material UI
+- Parcel
+- Babel
 
 
-** Server-Side
-⋅⋅* Node
-⋅⋅* Express
-⋅⋅* Socket.IO
+#### Server-Side
+- Node
+- Express
+- Socket.IO
 
 
 ### GETTING STARTED
